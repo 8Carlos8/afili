@@ -2,7 +2,7 @@
 
 <?php
 class Afiliado extends Modelo{
-    public $id:
+    public $id;
     public $id_persona;
     public $codigo_fac;
     public $folio;
