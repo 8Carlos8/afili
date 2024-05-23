@@ -36,27 +36,32 @@
 <body>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Eventos/Insertar.php" class="btn btn-success form-control">Organiza tu Evento</a>
+            <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
         </div>
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Eventos/indexA.php" class="btn btn-success form-control">Visualiza tus Eventos</a>
+            <a href="" class="btn btn-success form-control">Organiza tus Afiliados</a>
         </div>
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Cliente/insertar.php" class="btn btn-success form-control">Clientes</a>
+            <a href="" class="btn btn-success form-control">Visualiza tus Afiliados</a>
         </div>
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Cliente/index.php" class="btn btn-success form-control">Visualiza tus Clientes</a>
+            <a href="" class="btn btn-success form-control">Promotores</a>
         </div>
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Cajon/index.php" class="btn btn-success form-control">Cajones</a>
+            <a href="" class="btn btn-success form-control">Visualiza tus Promotores</a>
+        </div>
+    </div>
+    <div class="container py-2">
+        <div class="form-group text-center">
+            <a href="" class="btn btn-success form-control">Pagos</a>
         </div>
     </div>
 </body>

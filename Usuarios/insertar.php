@@ -61,6 +61,26 @@
                 Registrate</h1>
 
                 <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" value="" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido Paterno</label>
+                    <input type="text" name="apellido_paterno" value="" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido Materno</label>
+                    <input type="text" name="apellido_materno" value="" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="text" name="correo" value="" required>
+                </div>
+
+                <div class="form-group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                       <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
@@ -79,7 +99,7 @@
                     </svg>
                     <label class="control-label">Contraseña</label>
                     <input type="password" name="password" value="" class="form-control" required>
-                    <input type="hidden"name="rol" value="2"> 
+                    <input type="hidden"name="rol" value="1"> 
                 </div>
 
                 <div class="form-group text-center">

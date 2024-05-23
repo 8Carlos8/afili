@@ -2,6 +2,10 @@
 <?php
 class Usuario extends Modelo{
     public $id;
+    public $nombre;
+    public $apellido_paterno;
+    public $apellido_materno;
+    public $correo;
     public $username;
     public $password;
     public $rol;
@@ -22,8 +26,13 @@ class Usuario extends Modelo{
 
         if (isset($dato)) {
             $this->id = $dato->id;
+            $this->nombre = $dato->nombre;
+            $this->apellido_paterno = $dato->apellido_paterno;
+            $this->apellido_materno = $dato->apellido_materno;
+            $this->correo = $dato->correo;
             $this->username = $dato->username;
             $this->password = $dato->password;
+            $this->rol = $dato->rol;
 
             $this->ejecutaComandoIUD();
         }
@@ -32,14 +41,22 @@ class Usuario extends Modelo{
 
     function insertarRegistro(){
         $this->id = $_POST['id'];
+        $this->nombre = $_POST['nombre'];
+        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->correo = $_POST['correo'];
         $this->username = $_POST['username'];
         $this->password = $_POST['password'];
         $this->rol = $_POST['rol'];
 
         $this->consulta = 
         "insert into $this->tabla
-        (username, password, rol)".
+        (nombre, apellido_paterno, apellido_materno, correo, username, password, rol)".
         "values (".
+        "'$this->nombre',".
+        "'$this->apellido_paterno',".
+        "'$this->apellido_materno',".
+        "'$this->correo',".
         "'$this->username',".
         "'$this->password',".
         "$this->rol);";
@@ -49,12 +66,20 @@ class Usuario extends Modelo{
 
     function actualizaRegistro(){
         $this->id = $_POST['id'];
+        $this->nombre = $_POST['nombre'];
+        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->correo = $_POST['correo'];
         $this->username = $_POST['username'];
         $this->password = $_POST['password'];
         $this->rol = $_POST['rol'];
 
         $this->consulta = 
         "update $this->tabla set".
+        "nombre = '$this->nombre',".
+        "apellido_paterno = '$this->apellido_paterno',".
+        "apellido_materno = '$this->apellido_materno',".
+        "correo = '$this->correo',".
         "username = '$this->username',".
         "password = '$this->password',".
         "rol = $this->rol".

@@ -58,5 +58,4 @@ class Sesion extends Modelo{
     }
 
 } // fin de la clase
-}
 ?>

@@ -4,7 +4,7 @@ class Modelo
 	protected $host = "localhost";
 	protected $usuario = "root";
 	protected $contraseña = "";
-	protected $database = "cancaco";
+	protected $database = "canaco";
 	protected $mbd;
 	protected $tabla;
 	protected $consulta;
