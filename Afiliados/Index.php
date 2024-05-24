@@ -1,6 +1,8 @@
-<?php require_once('../Logica/Persona.php')?>
 <?php 
-$afiliado = new Persona();
+require_once('../Logica/Afiliado.php');
+require_once('../Sesion/header.php');
+
+$afiliado = new Afiliado();
 $afiliados = $afiliado->lista();
 ?>
 <!DOCTYPE html>
@@ -10,6 +12,12 @@ $afiliados = $afiliado->lista();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Afiliados</title>
 </head>
+<style>
+    body {
+            background-color: white;
+            font-family: 'Arial', sans-serif;
+        }
+</style>
 <body>
     <div class="container">
         <div class="form-group text-center">
@@ -21,20 +29,13 @@ $afiliados = $afiliado->lista();
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>RFC Text</th>
-                    <th>RFC PDF</th>
-                    <th>CURP Text</th>
-                    <th>CURP PDF</th>
+                    <th>RFC</th>
+                    <th>CURP</th>
                     <th>Dirección</th>
                     <th>Número</th>
-                    <th>Comprobante de Domicilio</th>
                     <th>Código Postal</th>
                     <th>Colonia</th>
-                    <th>INE</th>
-                    <th>Contrato de Arrendamiento</th>
-                    <th>Croquis</th>
-                    <th>Imagen 1</th>
-                    <th>Imagen 2</th>
+                    <th>Expediente</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,25 +43,18 @@ $afiliados = $afiliado->lista();
                     <tr>
                         <td><spam title="<?= $afiliado->id ?>"><?= $afiliado->id ?></spam></td>
                         <td><spam title="<?= $afiliado->nombre ?>"><?= $afiliado->nombre ?></spam></td>
-                        <td><spam title="<?= $afiliado->rfc_text ?>"<?= $afiliado->rfc_text ?>></spam></td>
-                        <td><spam title="<?= $afiliado->rfc_pdf ?>"<?= $afiliado->rfc_pdf ?>></spam></td>
-                        <td><spam title="<?= $afiliado->curp_text ?>"<?= $afiliado->curp_text ?>></spam></td>
-                        <td><spam title="<?= $afiliado->curp_pdf ?>"<?= $afiliado->curp_pdf ?>></spam></td>
+                        <td><spam title="<?= $afiliado->rfc ?>"<?= $afiliado->rfc_text ?>></spam></td>
+                        <td><spam title="<?= $afiliado->curp ?>"<?= $afiliado->curp_text ?>></spam></td>
                         <td><spam title="<?= $afiliado->direccion ?>"<?= $afiliado->direccion ?>></spam></td>
                         <td><spam title="<?= $afiliado->num ?>"<?= $afiliado->num ?>></spam></td>
-                        <td><spam title="<?= $afiliado->comprobante_domi ?>"<?= $afiliado->comprobante_domi ?>></spam></td>
                         <td><spam title="<?= $afiliado->cod_postal ?>"<?= $afiliado->cod_postal ?>></spam></td>
                         <td><spam title="<?= $afiliado->colonia ?>"<?= $afiliado->colonia ?>></spam></td>
-                        <td><spam title="<?= $afiliado->ine ?>"<?= $afiliado->ine ?>></spam></td>
-                        <td><spam title="<?= $afiliado->contrato_arrenda ?>"<?= $afiliado->contrato_arrenda ?>></spam></td>
-                        <td><spam title="<?= $afiliado->croquis ?>"<?= $afiliado->croquis ?>></spam></td>
-                        <td><spam title="<?= $afiliado->img1 ?>"<?= $afiliado->img1 ?>></spam></td>
-                        <td><spam title="<?= $afiliado->img2 ?>"<?= $afiliado->img2 ?>></spam></td>
+                        <td><spam title="<?= $afiliado->expediente ?>"<?= $afiliado->expediente ?>></spam></td>
                         <td>
-                            <a href="Editar.php?id=<?= $afiliado->id ?>" title="Editar Afiliado"><img src="../images/pencil.svg"></a>&nbsp;
-                            <a href="Visualizar.php=id<?= $afiliado->id ?>" title="Visualizar Afiliado"><img src="../images/view-list.svg"></a>&nbsp;
-                            <a href=""></a>
-                        </td>
+                        <a href="visualizar.php?username=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
+                        <a href="actualizar.php?username=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
+                        <a href="eliminar.php?username=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                    </td>
                     </tr>
                 <?php } ?>
             </tbody>

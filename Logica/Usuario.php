@@ -75,15 +75,15 @@ class Usuario extends Modelo{
         $this->rol = $_POST['rol'];
 
         $this->consulta = 
-        "update $this->tabla set".
-        "nombre = '$this->nombre',".
-        "apellido_paterno = '$this->apellido_paterno',".
-        "apellido_materno = '$this->apellido_materno',".
-        "correo = '$this->correo',".
-        "username = '$this->username',".
-        "password = '$this->password',".
-        "rol = $this->rol".
-        "where id = $this->id";
+        "update $this->tabla set ".
+        "nombre = '$this->nombre', ".
+        "apellido_paterno = '$this->apellido_paterno', ".
+        "apellido_materno = '$this->apellido_materno', ".
+        "correo = '$this->correo', ".
+        "username = '$this->username', ".
+        "password = '$this->password', ".
+        "rol = $this->rol ".
+        "where username = '$this->username'";
 
         $this->ejecutaComandoIUD();
     }

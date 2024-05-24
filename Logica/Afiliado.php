@@ -3,8 +3,8 @@
 class Afiliado extends Modelo{
     public $id;
     public $nombre;
-    public $rfc_text;
-    public $curp_text;
+    public $rfc;
+    public $curp;
     public $direccion;
     public $num;
     public $cod_postal;
@@ -30,8 +30,8 @@ class Afiliado extends Modelo{
     function insertarRegistro(){
         $this->id = $_POST['id'];
         $this->nombre = $_POST['nombre'];
-        $this->rfc_text = $_POST['rfc_text'];
-        $this->curp_text = $_POST['curp_text'];
+        $this->rfc = $_POST['rfc'];
+        $this->curp = $_POST['curp'];
         $this->direccion = $_POST['direccion'];
         $this->num = $_POST['num'];
         $this->cod_postal = $_POST['cod_postal'];
@@ -40,11 +40,11 @@ class Afiliado extends Modelo{
         $expe_con = file_get_contents($_FILES['expediente']['tmp_name']);
 
         $this->consulta = 
-        "insert into $this->tabla (nombre, rfc_text, curp_text, direccion, num, cod_postal, colonia, expediente) ".
+        "insert into $this->tabla (nombre, rfc, curp, direccion, num, cod_postal, colonia, expediente) ".
         "values (".
         "'$this->nombre',".
-        "'$this->rfc_text',".
-        "'$this->curp_text',".
+        "'$this->rfc',".
+        "'$this->curp',".
         "'$this->direccion',".
         "$this->num,".
         "'$this->cod_postal',".
@@ -57,8 +57,8 @@ class Afiliado extends Modelo{
     function actualizaRegistro(){
         $this->id = $_POST['id'];
         $this->nombre = $_POST['nombre'];
-        $this->rfc_text = $_POST['rfc_text'];
-        $this->curp_text = $_POST['curp_text'];
+        $this->rfc = $_POST['rfc'];
+        $this->curp = $_POST['curp'];
         $this->direccion = $_POST['direccion'];
         $this->num = $_POST['num'];
         $this->cod_postal = $_POST['cod_postal'];
@@ -68,8 +68,8 @@ class Afiliado extends Modelo{
         $this->consulta = 
         "update $this->tabla set".
         "nombre = '$this->nombre',".
-        "rfc_text = '$this->rfc_text',".
-        "curp_text = '$this->curp_text',".
+        "rfc = '$this->rfc',".
+        "curp = '$this->curp',".
         "direccion = '$this->direccion',".
         "num = $this->num,".
         "cod_postal = '$this->cod_postal',".

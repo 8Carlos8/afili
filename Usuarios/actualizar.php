@@ -29,7 +29,7 @@ if (isset($_POST['username'])) {
     <div class="form-group text-center">
         <a href="index.php" class="btn btn-success"><img src="../images/view-list.svg">&nbsp;Lista de Usuario</a>
     </div>
-    <form name="frmModProd" method="post" action="modificar.php">
+    <form name="frmModProd" method="post" action="actualizar.php">
         <input type="hidden" name="id" value="<?= $usuario->username ?>">
         <table class="table">
                 <div class="form-group">
@@ -39,28 +39,32 @@ if (isset($_POST['username'])) {
 
                 <div class="form-group">
                     <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" value="" required>
+                    <input type="text" name="apellido_paterno" value="<?= $usuario->apellido_paterno ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" value="" required>
+                    <input type="text" name="apellido_materno" value="<?= $usuario->apellido_materno ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="text" name="correo" value="" required>
+                    <input type="text" name="correo" value="<?= $usuario->correo ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Usuario</label>
-                    <input type="text" name="username" value="" required>
+                    <input type="text" name="username" value="<?= $usuario->username ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" name="password" value="" required>
+                    <input type="password" name="password" value="<?= $usuario->password ?>" required>
                     <input type="hidden"name="rol" value="1"> 
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
                 </div>
         </table>
     </form>
