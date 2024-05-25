@@ -36,23 +36,43 @@ class Afiliado extends Modelo{
         $this->num = $_POST['num'];
         $this->cod_postal = $_POST['cod_postal'];
         $this->colonia = $_POST['colonia'];
-        //$this->expediente = $_POST['expediente'];
-        $expe_con = file_get_contents($_FILES['expediente']['tmp_name']);
-
-        $this->consulta = 
-        "insert into $this->tabla (nombre, rfc, curp, direccion, num, cod_postal, colonia, expediente) ".
-        "values (".
-        "'$this->nombre',".
-        "'$this->rfc',".
-        "'$this->curp',".
-        "'$this->direccion',".
-        "$this->num,".
-        "'$this->cod_postal',".
-        "'$this->colonia',".
-        "'$expe_con');";
-
-        $this->ejecutaComandoIUD();
+    
+        // Verifica si se subió un archivo
+        if(isset($_FILES['expediente']) && $_FILES['expediente']['error'] == 0){
+            $file_tmp = $_FILES['expediente']['tmp_name'];
+            $file_type = $_FILES['expediente']['type'];
+    
+            // Verifica que el archivo sea un PDF
+            if($file_type == 'application/pdf'){
+                $expe_con = file_get_contents($file_tmp);
+            } else {
+                die("Error: El archivo debe ser un PDF.");
+            }
+        } else {
+            die("Error: No se pudo subir el archivo.");
+        }
+    
+        try {
+            $pdo = new PDO('mysql:host=your_host;dbname=your_db', 'your_user', 'your_password');
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+            $stmt = $pdo->prepare("INSERT INTO $this->tabla (nombre, rfc, curp, direccion, num, cod_postal, colonia, expediente) VALUES (:nombre, :rfc, :curp, :direccion, :num, :cod_postal, :colonia, :expediente)");
+    
+            $stmt->bindParam(':nombre', $this->nombre);
+            $stmt->bindParam(':rfc', $this->rfc);
+            $stmt->bindParam(':curp', $this->curp);
+            $stmt->bindParam(':direccion', $this->direccion);
+            $stmt->bindParam(':num', $this->num, PDO::PARAM_INT);
+            $stmt->bindParam(':cod_postal', $this->cod_postal);
+            $stmt->bindParam(':colonia', $this->colonia);
+            $stmt->bindParam(':expediente', $expe_con, PDO::PARAM_LOB);
+    
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
+    
 
     function actualizaRegistro(){
         $this->id = $_POST['id'];

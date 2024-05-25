@@ -1,19 +1,15 @@
 <?php
 include_once("../Logica/Usuario.php");
 session_start();
+$usuario = new Usuario();
+$usuarios = $usuario->lista();
 $username = $_SESSION['username'];
-//$_SESSION['rol'] = $rol;
-//$rol = $_SESSION['rol'];
-//var_dump($_SESSION['rol']);
-//echo $rol;
-//var_dump($rol);
 
 if (!isset($username)  || empty($username)) {
-    header("Location: inicio.php");
+    header("Location: Inicio.php");
 }
 if (isset($_SESSION['rol'])) {
     $rol = $_SESSION['rol'];
-    //var_dump($rol);
 }
 ?>
 
@@ -56,7 +52,9 @@ if (isset($_SESSION['rol'])) {
                 <a class="nav-link" href="../Sesion/Inicio.php">Menu Principal</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../Usuario/modificar.php">Cambio de Datos</a>
+                <?php foreach($usuarios as $usuario) {?>
+                <a class="nav-link" href="../Usuarios/actualizar.php?username=<?= $usuario->username ?>">Cambio de Datos</a>
+                <?php } ?>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="logaut.php">Cerrar Sesión</a>

@@ -28,7 +28,7 @@ if (isset($_POST['id'])) {
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista de Afiliados</a>
         </div>
-        <form name="frmInsAfili" method="post" action="insertar.php">
+        <form name="frmInsAfili" method="post" action="insertar.php" enctype="multipart/form-data">
             <input type="hidden" name="id" value="0">
             <div class="form-group">
                 <label>Nombre del Afiliado</label>
@@ -60,7 +60,7 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Expediente</label>
-                <input type="file" name="expediente" id="expediente" class="form-control" required> 
+                <input type="file" name="expediente" id="expediente" class="form-control" accept="application/pdf"> 
             </div>
             <div class="form-group text-center">
                 <a href="index.php">Regresar</a>

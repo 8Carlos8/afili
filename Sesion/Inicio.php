@@ -41,17 +41,12 @@
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Afiliados/index.php" class="btn btn-success form-control">Visualiza tus Afiliados</a>
+            <a href="../Afiliados/index.php" class="btn btn-success form-control">Afiliados</a>
         </div>
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="" class="btn btn-success form-control">Promotores</a>
-        </div>
-    </div>
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="" class="btn btn-success form-control">Visualiza tus Promotores</a>
+            <a href="../Promotores//index.php" class="btn btn-success form-control">Promotores</a>
         </div>
     </div>
     <div class="container py-2">

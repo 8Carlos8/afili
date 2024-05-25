@@ -32,10 +32,10 @@ class Promotor extends Modelo{
         $this->consulta =
         "insert into $this->tabla (id_usuario, siglas_promotor)".
         "values (".
-        "'$this->id_usuario',".
+        "$this->id_usuario,".
         "'$this->siglas_promotor');";
 
-        $this->ejecutarComandoIUD();
+        $this->ejecutaComandoIUD();
     }
 
     function actualizaRegistro(){
@@ -45,7 +45,7 @@ class Promotor extends Modelo{
 
         $this->consulta = 
         "update $this->tabla set ".
-        "id_promotor = '$this->id_promotor',".
+        "id_usuario = $this->id_usuario,".
         "siglas_promotor = '$this->siglas_promotor'".
         "where id = $this->id";
 
@@ -54,7 +54,7 @@ class Promotor extends Modelo{
 
     function eliminaRegistro($id){
         $this->consulta = 
-        "delete from $this->tabla".
+        "delete from $this->tabla ".
         "where id = $id;";
 
         $this->ejecutaComandoIUD();

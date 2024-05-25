@@ -62,22 +62,22 @@
 
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" name="nombre" value="" required>
+                    <input type="text" name="nombre" required>
                 </div>
 
                 <div class="form-group">
                     <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" value="" required>
+                    <input type="text" name="apellido_paterno" required>
                 </div>
 
                 <div class="form-group">
                     <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" value="" required>
+                    <input type="text" name="apellido_materno" required>
                 </div>
 
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="text" name="correo" value="" required>
+                    <input type="text" name="correo" required>
                 </div>
 
                 <div class="form-group">
@@ -87,7 +87,7 @@
                       <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                     </svg>
                     <label class="control-label">Usuario</label>
-                    <input type="text" name="username" value="" class="form-control" required>
+                    <input type="text" name="username" class="form-control" required>
                 </div>
 
                 <div class="form-group">
@@ -98,7 +98,7 @@
                       <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
                     </svg>
                     <label class="control-label">Contraseña</label>
-                    <input type="password" name="password" value="" class="form-control" required>
+                    <input type="password" name="password" class="form-control" required>
                     <input type="hidden"name="rol" value="1"> 
                 </div>
 

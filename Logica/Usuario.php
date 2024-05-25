@@ -43,7 +43,7 @@ class Usuario extends Modelo{
         $this->id = $_POST['id'];
         $this->nombre = $_POST['nombre'];
         $this->apellido_paterno = $_POST['apellido_paterno'];
-        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->apellido_materno = $_POST['apellido_materno'];
         $this->correo = $_POST['correo'];
         $this->username = $_POST['username'];
         $this->password = $_POST['password'];
@@ -68,7 +68,7 @@ class Usuario extends Modelo{
         $this->id = $_POST['id'];
         $this->nombre = $_POST['nombre'];
         $this->apellido_paterno = $_POST['apellido_paterno'];
-        $this->apellido_paterno = $_POST['apellido_paterno'];
+        $this->apellido_materno = $_POST['apellido_materno'];
         $this->correo = $_POST['correo'];
         $this->username = $_POST['username'];
         $this->password = $_POST['password'];
@@ -90,10 +90,11 @@ class Usuario extends Modelo{
 
     function eliminaRegistro($id){
         $this->consulta = 
-        "delete from $this->tabla".
-        "where id = $this->id;";
+        "delete from $this->tabla ".
+        "where id = $id;";
 
-        $this->$ejecutaComandoIUD();
+        $this->ejecutaComandoIUD();
     }
+    
 }
 ?>
