@@ -1,7 +1,14 @@
-<?php include_once("header.php"); ?>
+<?php 
+include_once("header.php"); 
+include_once("../Logica/Usuario.php");
+
+$usuario = new Usuario();
+$username = $_SESSION['username'];
+$usuarios = $usuario->recuperarUsuario($username);
+
+?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Inicio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,28 +39,38 @@
         }
     </style>
 </head>
-
 <body>
+    <?php 
+        if ($usuario->rol == 1) {
+    ?>
     <div class="container py-2">
         <div class="form-group text-center">
             <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
         </div>
     </div>
+    <?php 
+        }
+    ?>        
     <div class="container py-2">
         <div class="form-group text-center">
             <a href="../Afiliados/index.php" class="btn btn-success form-control">Afiliados</a>
         </div>
     </div>
+    <?php 
+        if ($usuario->rol == 1) {
+    ?>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="../Promotores//index.php" class="btn btn-success form-control">Promotores</a>
+            <a href="../Promotores/index.php" class="btn btn-success form-control">Promotores</a>
         </div>
     </div>
+    <?php 
+        }
+    ?>        
     <div class="container py-2">
         <div class="form-group text-center">
             <a href="" class="btn btn-success form-control">Pagos</a>
         </div>
     </div>
 </body>
-
 </html>

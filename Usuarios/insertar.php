@@ -99,7 +99,7 @@
                     </svg>
                     <label class="control-label">Contraseña</label>
                     <input type="password" name="password" class="form-control" required>
-                    <input type="hidden"name="rol" value="1"> 
+                    <input type="hidden"name="rol" value="2"> 
                 </div>
 
                 <div class="form-group text-center">
