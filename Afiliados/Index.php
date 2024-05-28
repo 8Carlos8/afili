@@ -43,13 +43,15 @@ $afiliados = $afiliado->lista();
                     <tr>
                         <td><spam title="<?= $afiliado->id ?>"><?= $afiliado->id ?></spam></td>
                         <td><spam title="<?= $afiliado->nombre ?>"><?= $afiliado->nombre ?></spam></td>
-                        <td><spam title="<?= $afiliado->rfc ?>"<?= $afiliado->rfc_text ?>></spam></td>
-                        <td><spam title="<?= $afiliado->curp ?>"<?= $afiliado->curp_text ?>></spam></td>
-                        <td><spam title="<?= $afiliado->direccion ?>"<?= $afiliado->direccion ?>></spam></td>
-                        <td><spam title="<?= $afiliado->num ?>"<?= $afiliado->num ?>></spam></td>
-                        <td><spam title="<?= $afiliado->cod_postal ?>"<?= $afiliado->cod_postal ?>></spam></td>
-                        <td><spam title="<?= $afiliado->colonia ?>"<?= $afiliado->colonia ?>></spam></td>
-                        <td><spam title="<?= $afiliado->expediente ?>"<?= $afiliado->expediente ?>></spam></td>
+                        <td><spam title="<?= $afiliado->rfc ?>"><?= $afiliado->rfc ?></spam></td>
+                        <td><spam title="<?= $afiliado->curp ?>"><?= $afiliado->curp ?></spam></td>
+                        <td><spam title="<?= $afiliado->direccion ?>"><?= $afiliado->direccion ?></spam></td>
+                        <td><spam title="<?= $afiliado->numero ?>"><?= $afiliado->numero ?></spam></td>
+                        <td><spam title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></spam></td>
+                        <td><spam title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></spam></td>
+                        <td><spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
+                                <iframe src="../Archivos/<?= $afiliado->expediente ?>" type="application/pdf" width="100%" height="100%"></iframe>
+                            </spam></td>
                         <td>
                         <a href="visualizar.php?username=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                         <a href="actualizar.php?username=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
