@@ -24,6 +24,16 @@ class Afiliado extends Modelo{
     function recuperarRegistro($id){
         $this->consulta = "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
+        if (isset($dato)) {
+            $this->nombre = $dato->nombre;
+            $this->rfc = $dato->rfc;
+            $this->curp = $dato->curp;
+            $this->direccion = $dato->direccion;
+            $this->numero = $dato->numero;
+            $this->codiigo_postal = $dato->codiigo_postal;
+            $this->colonia = $dato->colonia;
+            $this->expediente = $dato->expediente;
+        }
         return $dato;
     }
 
@@ -68,21 +78,30 @@ class Afiliado extends Modelo{
         $this->num = $_POST['num'];
         $this->cod_postal = $_POST['cod_postal'];
         $this->colonia = $_POST['colonia'];
-        $this->expediente = $_POST['expediente'];
+        // $this->expediente = $_FILES['expediente']['name'];
+        $this->expediente = isset($_FILES['expediente']['name']) ? $_FILES['expediente']['name'] : null;
 
+    
+        // Mover el archivo a la carpeta deseada
+        $file_tmp = $_FILES['expediente']['tmp_name'];
+        $route = "../Archivos/".$this->expediente;
+        move_uploaded_file($file_tmp, $route);
+    
         $this->consulta = 
-        "update $this->tabla set".
-        "nombre = '$this->nombre',".
-        "rfc = '$this->rfc',".
-        "curp = '$this->curp',".
-        "direccion = '$this->direccion',".
-        "num = $this->num,".
-        "cod_postal = '$this->cod_postal',".
-        "colonia = '$this->colonia',".
+        "update $this->tabla set ".
+        "nombre = '$this->nombre', ".
+        "rfc = '$this->rfc', ".
+        "curp = '$this->curp', ".
+        "direccion = '$this->direccion', ".
+        "numero = $this->num, ".
+        "codiigo_postal = '$this->cod_postal', ".
+        "colonia = '$this->colonia', ".
+        "expediente = '$this->expediente' ".
         "where id = $this->id";
-
+    
         $this->ejecutaComandoIUD();
     }
+    
 
     function eliminaRegistro($id){
         $this->consulta = 

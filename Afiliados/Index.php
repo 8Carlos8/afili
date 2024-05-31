@@ -50,12 +50,13 @@ $afiliados = $afiliado->lista();
                         <td><spam title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></spam></td>
                         <td><spam title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></spam></td>
                         <td><spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
-                                <iframe src="../Archivos/<?= $afiliado->expediente ?>" type="application/pdf" width="100%" height="100%"></iframe>
+                        <br>
+                                <a href="../Archivos/<?= $afiliado->expediente ?>" type="application/pdf" target="_blank">Ver Expediente</a>
                             </spam></td>
                         <td>
-                        <a href="visualizar.php?username=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
-                        <a href="actualizar.php?username=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
-                        <a href="eliminar.php?username=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                        <a href="visualizar.php?id=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
+                        <a href="actualizar.php?id=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Afiliado</a>&nbsp;
+                        <a href="eliminar.php?id=<?= $afiliado->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
                     </td>
                     </tr>
                 <?php } ?>
