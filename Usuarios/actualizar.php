@@ -33,26 +33,6 @@ if (isset($_POST['username'])) {
         <input type="hidden" name="id" value="<?= $usuario->username ?>">
         <table class="table">
                 <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" value="<?= $usuario->nombre?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" value="<?= $usuario->apellido_paterno ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" value="<?= $usuario->apellido_materno ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="text" name="correo" value="<?= $usuario->correo ?>" required>
-                </div>
-
-                <div class="form-group">
                     <label>Usuario</label>
                     <input type="text" name="username" value="<?= $usuario->username ?>" required>
                 </div>
@@ -60,7 +40,6 @@ if (isset($_POST['username'])) {
                 <div class="form-group">
                     <label>Contraseña</label>
                     <input type="password" name="password" value="<?= $usuario->password ?>" required>
-                    <input type="hidden"name="rol" value="1"> 
                 </div>
 
                 <div class="form-group text-center">

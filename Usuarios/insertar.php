@@ -59,27 +59,6 @@
                       <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
                     </svg>
                 Registrate</h1>
-
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input type="text" name="nombre" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Correo</label>
-                    <input type="text" name="correo" required>
-                </div>
-
                 <div class="form-group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
                       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

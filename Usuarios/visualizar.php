@@ -36,22 +36,6 @@ $usuario = new Usuario();
                 </td>
             </tr>
             <tr>
-                <td><label>Nombre</label></td>
-                <td><span><?= $usuario->nombre ?></span></td>
-            </tr>
-            <tr>
-                <td><label>Apellido Paterno</label></td>
-                <td><span><?= $usuario->apellido_paterno ?></span></td>
-            </tr>
-            <tr>
-                <td><label>Apellido Materno</label></td>
-                <td><span><?= $usuario->apellido_materno ?></span></td>
-            </tr>
-            <tr>
-                <td><label>Correo</label></td>
-                <td><span><?= $usuario->correo ?></span></td>
-            </tr>
-            <tr>
                 <td><label>Usuario</label></td>
                 <td><?= $usuario->username ?></td>
             </tr>

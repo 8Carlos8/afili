@@ -41,7 +41,7 @@ $usuarios = $usuario->recuperarUsuario($username);
 </head>
 <body>
     <?php 
-        if ($usuario->rol == 1) {
+        //if ($usuario->rol == 1) {
     ?>
     <div class="container py-2">
         <div class="form-group text-center">
@@ -49,15 +49,15 @@ $usuarios = $usuario->recuperarUsuario($username);
         </div>
     </div>
     <?php 
-        }
-    ?>        
+        //}
+    ?>
     <div class="container py-2">
         <div class="form-group text-center">
             <a href="../Afiliados/index.php" class="btn btn-success form-control">Afiliados</a>
         </div>
     </div>
     <?php 
-        if ($usuario->rol == 1) {
+        //if ($usuario->rol == 1) {
     ?>
     <div class="container py-2">
         <div class="form-group text-center">
@@ -65,11 +65,21 @@ $usuarios = $usuario->recuperarUsuario($username);
         </div>
     </div>
     <?php 
-        }
+        //}
     ?>        
     <div class="container py-2">
         <div class="form-group text-center">
             <a href="" class="btn btn-success form-control">Pagos</a>
+        </div>
+    </div>
+    <div class="container py-2">
+        <div class="form-group text-center">
+            <a href="" class="btn btn-success form-control">Roles</a>
+        </div>
+    </div>
+    <div class="container py-2">
+        <div class="form-group text-center">
+            <a href="../Administradores/index.php" class="btn btn-success form-control">Administradores</a>
         </div>
     </div>
 </body>

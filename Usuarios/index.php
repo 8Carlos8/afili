@@ -23,13 +23,8 @@ $usuarios = $usuario->lista();
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Correo</th>
                 <th>Username</th>
                 <th>Password</th>
-                <th>Rol</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -37,13 +32,8 @@ $usuarios = $usuario->lista();
             <?php foreach($usuarios as $usuario) {?>
                 <tr>
                     <td><span title="<?= $usuario->id ?>"><?= $usuario->id?></span></td>
-                    <td><span title="<?= $usuario->nombre ?>"><?= $usuario->nombre?></td>
-                    <td><span title="<?= $usuario->apellido_paterno ?>"><?= $usuario->apellido_paterno?></td>
-                    <td><span title="<?= $usuario->apellido_materno ?>"><?= $usuario->apellido_materno?></td>
-                    <td><span title="<?= $usuario->correo ?>"><?= $usuario->correo?></td>
                     <td><span title="<?= $usuario->username ?>"><?= $usuario->username?></td>
                     <td><span title="<?= $usuario->password ?>"><?= $usuario->password?></td>
-                    <td><span title="<?= $usuario->rol ?>"><?= $usuario->rol?></td>
                     <td>
                         <a href="visualizar.php?username=<?= $usuario->username ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                         <a href="actualizar.php?username=<?= $usuario->username ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
