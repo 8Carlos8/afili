@@ -1,6 +1,7 @@
-<?php require_once('Modelo.php'); ?>
 <?php
-class Promotor extends Modelo{
+require_once('Modelo.php');
+
+class Administrador extends Modelo{
     public $id;
     public $id_usuario;
     public $id_rol;
@@ -9,11 +10,10 @@ class Promotor extends Modelo{
     public $apellido_materno;
     public $correo;
     public $telefono;
-    public $siglas_promotor;
 
     function __construct(){
         parent::__construct();
-        $this->tabla = "promotor";
+        $this->tabla = 'administrador';
     }
 
     function lista(){
@@ -32,7 +32,6 @@ class Promotor extends Modelo{
             $this->apellido_materno = $dato->apellido_materno;
             $this->correo = $dato->correo;
             $this->telefono = $dato->telefono;
-            $this->siglas_promotor = $dato->siglas_promotor;
         }
     }
 
@@ -45,10 +44,9 @@ class Promotor extends Modelo{
         $this->apellido_materno = $_POST['apellido_materno'];
         $this->correo = $_POST['correo'];
         $this->telefono = $_POST['telefono'];
-        $this->siglas_promotor = $_POST['siglas_promotor'];
 
-        $this->consulta =
-        "insert into $this->tabla (id_usuario, id_rol, nombre, apellido_paterno, apellido_materno, correo, telefono, siglas_promotor)".
+        $this->consulta = 
+        "insert into $this->tabla (id_usuario, id_rol, nombre, apellido_paterno, apellido_materno, correo, telefono)".
         "values (".
         "$this->id_usuario,".
         "$this->id_rol,".
@@ -56,8 +54,7 @@ class Promotor extends Modelo{
         "'$this->apellido_paterno',".
         "'$this->apellido_materno',".
         "'$this->correo',".
-        "'$this->telefono',".
-        "'$this->siglas_promotor');";
+        "'$this->telefono');";
 
         $this->ejecutaComandoIUD();
     }
@@ -71,18 +68,16 @@ class Promotor extends Modelo{
         $this->apellido_materno = $_POST['apellido_materno'];
         $this->correo = $_POST['correo'];
         $this->telefono = $_POST['telefono'];
-        $this->siglas_promotor = $_POST['siglas_promotor'];
 
         $this->consulta = 
         "update $this->tabla set ".
         "id_usuario = $this->id_usuario,".
         "id_rol = $this->id_rol,".
-        "'nombre = $this->nombre',".
-        "'apellido_paterno = $this->apellido_paterno',".
-        "'apellido_materno = $this->apellido_materno',".
-        "'correo = $this->correo',".
-        "'telefono = $this->telefono',".
-        "siglas_promotor = '$this->siglas_promotor',".
+        "nombre = '$this->nombre',".
+        "apellido_paterno = '$this->apellido_paterno',".
+        "apellido_materno = '$this->apellido_materno',".
+        "correo = '$this->correo',".
+        "telefono = '$this->telefono',".
         "where id = $this->id";
 
         $this->ejecutaComandoIUD();
