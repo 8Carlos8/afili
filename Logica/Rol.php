@@ -41,7 +41,7 @@ class Rol extends Modelo{
 
         $this->consulta =
         "update $this->tabla set ".
-        "nombre_rol = '$this->nombre_rol',".
+        "nombre_rol = '$this->nombre_rol'".
         "where id = $this->id";
 
         $this->ejecutaComandoIUD();

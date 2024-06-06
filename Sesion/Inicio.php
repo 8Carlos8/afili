@@ -74,7 +74,7 @@ $usuarios = $usuario->recuperarUsuario($username);
     </div>
     <div class="container py-2">
         <div class="form-group text-center">
-            <a href="" class="btn btn-success form-control">Roles</a>
+            <a href="../Roles/index.php" class="btn btn-success form-control">Roles</a>
         </div>
     </div>
     <div class="container py-2">

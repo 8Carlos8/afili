@@ -1,13 +1,10 @@
 <?php
-require_once('../Logica/Administrador.php');
-require_once('../Logica/Usuario.php');
+require_once('../Logica/Rol.php');
 require_once('../Sesion/header.php');
 
-$admnistrador = new Administrador();
-$usuario = new Usuario();
-$usuarios = $usuario->lista();
+$rol = new Rol();
 if (isset($_POST['id'])) {
-    $admnistrador->insertarRegistro();
+    $rol->insertaRegistro();
 }
 ?>
 <!DOCTYPE html>
@@ -31,13 +28,12 @@ if (isset($_POST['id'])) {
         <form name="frmInsAdm" action="insertar.php" method="post">
             <input type="hidden" name="id" value="0">
             <div class="form-group">
-                <label>ID Usuario</label>
-                <select name="id_usuario" id="id_usuario" class="form-control">
-                    <option value="">Seleccionar Usuario</option>
-                    <?php foreach ($usuarios as $usuario) { ?>
-                        <option value="<?= $usuario->id ?>"><?= $usuario->username ?></option>
-                    <?php } ?>
-                </select>
+                <label>Nombre del Rol</label>
+                <input type="text" name="nombre_rol" id="nombre_rol" required>
+            </div>
+            <div class="form-group text-center">
+                <a href="index.php">Regresar</a>
+                <button class="btn btn-primary btn-lg btn-block">&nbsp; Registrar</button>
             </div>
         </form>
     </div>
