@@ -8,8 +8,8 @@ class Afiliado extends Modelo{
     public $rfc;
     public $curp;
     public $direccion;
-    public $num;
-    public $cod_postal;
+    public $numero_Ext_Int;
+    public $codiigo_postal;
     public $colonia;
     public $telefono;
     public $correo;
@@ -35,7 +35,7 @@ class Afiliado extends Modelo{
             $this->rfc = $dato->rfc;
             $this->curp = $dato->curp;
             $this->direccion = $dato->direccion;
-            $this->numero = $dato->numero;
+            $this->numero_Ext_Int = $dato->numero_Ext_Int;
             $this->codiigo_postal = $dato->codiigo_postal;
             $this->colonia = $dato->colonia;
             $this->telefono = $dato->telefono;
@@ -53,8 +53,8 @@ class Afiliado extends Modelo{
         $this->rfc = $_POST['rfc'];
         $this->curp = $_POST['curp'];
         $this->direccion = $_POST['direccion'];
-        $this->num = $_POST['num'];
-        $this->cod_postal = $_POST['cod_postal'];
+        $this->numero_Ext_Int = $_POST['numero_Ext_Int'];
+        $this->codiigo_postal = $_POST['codiigo_postal'];
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
@@ -66,7 +66,7 @@ class Afiliado extends Modelo{
         move_uploaded_file($file_tmp, $route);
 
         $this->consulta = 
-        "insert into $this->tabla (nombre, apellido_paterno, apellido_materno, rfc, curp, direccion, numero, codiigo_postal, colonia, telefono, correo, expediente)".
+        "insert into $this->tabla (nombre, apellido_paterno, apellido_materno, rfc, curp, direccion, numero_Ext_Int, codiigo_postal, colonia, telefono, correo, expediente)".
         "values (".
         "'$this->nombre',".
         "'$this->apellido_paterno',".
@@ -74,8 +74,8 @@ class Afiliado extends Modelo{
         "'$this->rfc',".
         "'$this->curp',".
         "'$this->direccion',".
-        "$this->num,".
-        "$this->cod_postal,".
+        "'$this->numero_Ext_Int',".
+        "'$this->codiigo_postal',".
         "'$this->colonia',".
         "'$this->telefono',".
         "'$this->correo',".
@@ -92,8 +92,8 @@ class Afiliado extends Modelo{
         $this->rfc = $_POST['rfc'];
         $this->curp = $_POST['curp'];
         $this->direccion = $_POST['direccion'];
-        $this->num = $_POST['num'];
-        $this->cod_postal = $_POST['cod_postal'];
+        $this->numero_Ext_Int = $_POST['numero_Ext_Int'];
+        $this->codiigo_postal = $_POST['codiigo_postal'];
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
@@ -114,8 +114,8 @@ class Afiliado extends Modelo{
         "rfc = '$this->rfc', ".
         "curp = '$this->curp', ".
         "direccion = '$this->direccion', ".
-        "numero = $this->num, ".
-        "codiigo_postal = '$this->cod_postal', ".
+        "numero_Ext_Int = '$this->numero_Ext_Int', ".
+        "codiigo_postal = '$this->codiigo_postal', ".
         "colonia = '$this->colonia', ".
         "telefono = '$this->telefono', ".
         "correo = '$this->correo', ".

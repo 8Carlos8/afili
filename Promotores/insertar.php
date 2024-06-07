@@ -1,15 +1,17 @@
 <?php
 require_once('../Logica/Promotor.php');
 require_once('../Logica/Usuario.php');
+require_once('../Logica/Rol.php');
 require_once('../Sesion/header.php');
 
 $promotor = new Promotor();
 $usuario = new Usuario();
+$rol = new Rol();
+$roles = $rol->lista();
+$usuarios = $usuario->lista();
 if (isset($_POST['id'])) {
     $promotor->insertarRegistro();
 }
-
-$usuarios = $usuario->lista();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,10 +37,39 @@ $usuarios = $usuario->lista();
                 <label>Usuario</label>
                 <select name="id_usuario" id="id_usuario" class="form-control">
                     <option value="">Seleccionar Usuario</option>
-                    <?php foreach($usuarios as $usuario) { ?>
-                    <option value="<?= $usuario->id ?>"><?= $usuario->nombre ." ". $usuario->apellido_paterno ." ". $usuario->apellido_materno ?></option>
+                    <?php foreach ($usuarios as $usuario) { ?>
+                        <option value="<?= $usuario->id ?>"><?= $usuario->username ?></option>
                     <?php } ?>
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Rol</label>
+                <select name="id_rol" id="id_rol" class="form-control">
+                    <option value="">Seleccionar Rol</option>
+                    <?php foreach ($roles as $rol) { ?>
+                        <option value="<?= $rol->id ?>"><?= $rol->nombre_rol ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" id="nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input type="text" name="apellido_paterno" id="apellido_paterno" required>
+            </div>
+            <div class="form-group">
+            <label>Apellido Materno</label>
+                <input type="text" name="apellido_materno" id="apellido_materno" required>
+            </div>
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="email" name="correo" id="correo">
+            </div>
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="number" name="telefono" id="telefono" required>
             </div>
             <div class="form-group">
                 <label>Siglas del Promotor</label>

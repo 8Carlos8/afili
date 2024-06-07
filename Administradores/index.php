@@ -33,8 +33,8 @@ $roles = $rol->lista();
         <thead>
             <tr>
                 <th>ID</th>
-                <th>ID Usuario</th>
-                <th>ID Rol</th>
+                <th>Usuario</th>
+                <th>Rol</th>
                 <th>Nombre</th>
                 <th>Apellido Paterno</th>
                 <th>Apellido Materno</th>
@@ -45,12 +45,30 @@ $roles = $rol->lista();
         </thead>
         <tbody>
             <?php foreach ($administradores as $administrador) { ?>
-                <?php foreach ($usuarios as $usuario) { ?>
-                    <?php foreach ($usuarios as $rol) { ?>
                 <tr>
                     <td><span title="<?= $administrador->id ?>"><?= $administrador->id ?></span></td>
-                    <td><span title="<?= $administrador->id_usuario ?>"><?= $administrador->id_usuario ?></span></td>
-                    <td><span title="<?= $administrador->id_rol ?>"><?= $administrador->id_rol ?></span></td>
+                    <?php
+                        // Buscar el usuario correspondiente
+                        $usuarioEncontrado = null;
+                        foreach ($usuarios as $usuario) {
+                            if ($usuario->id == $administrador->id_usuario) {
+                                $usuarioEncontrado = $usuario;
+                                break;
+                            }
+                        }
+                    ?>
+                    <td><span title="<?= $administrador->id_usuario ?>"><?= $usuarioEncontrado ? $usuarioEncontrado->username : 'Usuario no encontrado' ?></span></td>
+                    <?php
+                        // Buscar el rol correspondiente
+                        $rolEncontrado = null;
+                        foreach ($roles as $rol) {
+                            if ($rol->id == $administrador->id_rol) {
+                            $rolEncontrado = $rol;
+                            break;
+                            }
+                        }
+                    ?>
+                    <td><span title="<?= $administrador->id_rol ?>"><?= $rolEncontrado ? $rolEncontrado->nombre_rol : 'Rol no encontrado' ?></span></td>
                     <td><span title="<?= $administrador->nombre ?>"><?= $administrador->nombre ?></span></td>
                     <td><span title="<?= $administrador->apellido_paterno ?>"><?= $administrador->apellido_paterno ?></span></td>
                     <td><span title="<?= $administrador->apellido_materno ?>"><?= $administrador->apellido_materno ?></span></td>
@@ -62,8 +80,6 @@ $roles = $rol->lista();
                         <a href="eliminar.php?id=<?= $administrador->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
                     </td>
                 </tr>
-                    <?php } ?>
-                <?php } ?>
             <?php } ?>
         </tbody>
     </table>

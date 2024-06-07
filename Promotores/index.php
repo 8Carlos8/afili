@@ -2,11 +2,14 @@
 require_once('../Sesion/header.php');
 require_once('../Logica/Promotor.php');
 require_once('../Logica/Usuario.php');
+require_once('../Logica/Rol.php');
 
 $promotor = new Promotor();
 $usuario = new Usuario();
+$rol = new Rol();
 $promotores = $promotor->lista();
 $usuarios = $usuario->lista();
+$roles = $rol->lista();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,15 +34,46 @@ $usuarios = $usuario->lista();
             <thead>
                 <th>ID</th>
                 <th>Usuario</th>
+                <th>Rol</th>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Correo</th>
+                <th>Telefono</th>
                 <th>Siglas Promotor</th>
                 <th>Acciones</th>
             </thead>
             <tbody>
                 <?php foreach($promotores as $promotor) {?>
-                    <?php foreach($usuarios as $usuario) {?>
                     <tr>
                         <td><span title="<?= $promotor->id ?>"><?= $promotor->id?></span></td>
-                        <td><span title="<?= $promotor->id_usuario . $usuario->id ?>"><?= $usuario->nombre ." ". $usuario->apellido_paterno ." ". $usuario->apellido_materno?></span></td>
+                            <?php
+                                // Buscar el usuario correspondiente
+                                $usuarioEncontrado = null;
+                                foreach ($usuarios as $usuario) {
+                                    if ($usuario->id == $promotor->id_usuario) {
+                                        $usuarioEncontrado = $usuario;
+                                        break;
+                                    }
+                                }
+                            ?>
+                        <td><span title="<?= $promotor->id_usuario ?>"><?= $usuarioEncontrado ? $usuarioEncontrado->username : 'Usuario no encontrado' ?></span></td>
+                            <?php
+                                // Buscar el rol correspondiente
+                                $rolEncontrado = null;
+                                foreach ($roles as $rol) {
+                                    if ($rol->id == $promotor->id_rol) {
+                                        $rolEncontrado = $rol;
+                                        break;
+                                    }
+                                }
+                            ?>
+                        <td><span title="<?= $promotor->id_rol ?>"><?= $rolEncontrado ? $rolEncontrado->nombre_rol : 'Rol no encontrado' ?></span></td>
+                        <td><span title="<?= $promotor->nombre ?>"><?= $promotor->nombre ?></span></td>
+                        <td><span title="<?= $promotor->apellido_paterno ?>"><?= $promotor->apellido_paterno ?></span></td>
+                        <td><span title="<?= $promotor->apellido_materno ?>"><?= $promotor->apellido_materno ?></span></td>
+                        <td><span title="<?= $promotor->correo ?>"><?= $promotor->correo ?></span></td>
+                        <td><span title="<?= $promotor->telefono ?>"><?= $promotor->telefono ?></span></td>
                         <td><span title="<?= $promotor->siglas_promotor ?>"><?= $promotor->siglas_promotor ?></span></td>
                         <td>
                         <a href="visualizar.php?id=<?= $promotor->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
@@ -47,8 +81,7 @@ $usuarios = $usuario->lista();
                         <a href="eliminar.php?id=<?= $promotor->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
                         </td>
                     </tr>
-                    <?php }
-                } ?>
+                    <?php } ?>
             </tbody>
         </table>
     </div>

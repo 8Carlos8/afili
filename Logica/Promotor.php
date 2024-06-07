@@ -77,12 +77,12 @@ class Promotor extends Modelo{
         "update $this->tabla set ".
         "id_usuario = $this->id_usuario,".
         "id_rol = $this->id_rol,".
-        "'nombre = $this->nombre',".
-        "'apellido_paterno = $this->apellido_paterno',".
-        "'apellido_materno = $this->apellido_materno',".
-        "'correo = $this->correo',".
-        "'telefono = $this->telefono',".
-        "siglas_promotor = '$this->siglas_promotor',".
+        "nombre = '$this->nombre',".
+        "apellido_paterno = '$this->apellido_paterno',".
+        "apellido_materno = '$this->apellido_materno',".
+        "correo = '$this->correo',".
+        "telefono = '$this->telefono',".
+        "siglas_promotor = '$this->siglas_promotor'".
         "where id = $this->id";
 
         $this->ejecutaComandoIUD();

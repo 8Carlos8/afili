@@ -77,7 +77,7 @@ class Administrador extends Modelo{
         "apellido_paterno = '$this->apellido_paterno',".
         "apellido_materno = '$this->apellido_materno',".
         "correo = '$this->correo',".
-        "telefono = '$this->telefono',".
+        "telefono = '$this->telefono'".
         "where id = $this->id";
 
         $this->ejecutaComandoIUD();

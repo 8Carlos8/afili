@@ -29,13 +29,18 @@ $afiliados = $afiliado->lista();
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
                     <th>RFC</th>
                     <th>CURP</th>
                     <th>Dirección</th>
-                    <th>Número</th>
+                    <th>Número Exterior e Interior</th>
                     <th>Código Postal</th>
                     <th>Colonia</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
                     <th>Expediente</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,12 +48,16 @@ $afiliados = $afiliado->lista();
                     <tr>
                         <td><spam title="<?= $afiliado->id ?>"><?= $afiliado->id ?></spam></td>
                         <td><spam title="<?= $afiliado->nombre ?>"><?= $afiliado->nombre ?></spam></td>
+                        <td><spam title="<?= $afiliado->apellido_paterno ?>"><?= $afiliado->apellido_paterno ?></spam></td>
+                        <td><spam title="<?= $afiliado->apellido_materno ?>"><?= $afiliado->apellido_materno ?></spam></td>
                         <td><spam title="<?= $afiliado->rfc ?>"><?= $afiliado->rfc ?></spam></td>
                         <td><spam title="<?= $afiliado->curp ?>"><?= $afiliado->curp ?></spam></td>
                         <td><spam title="<?= $afiliado->direccion ?>"><?= $afiliado->direccion ?></spam></td>
-                        <td><spam title="<?= $afiliado->numero ?>"><?= $afiliado->numero ?></spam></td>
+                        <td><spam title="<?= $afiliado->numero_Ext_Int ?>"><?= $afiliado->numero_Ext_Int ?></spam></td>
                         <td><spam title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></spam></td>
                         <td><spam title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></spam></td>
+                        <td><spam title="<?= $afiliado->telefono ?>"><?= $afiliado->telefono ?></spam></td>
+                        <td><spam title="<?= $afiliado->correo ?>"><?= $afiliado->correo ?></spam></td>
                         <td><spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
                         <br>
                                 <a href="../Archivos/<?= $afiliado->expediente ?>" type="application/pdf" target="_blank">Ver Expediente</a>

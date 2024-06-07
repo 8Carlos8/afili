@@ -1,12 +1,10 @@
 <?php 
 require_once('../Logica/Afiliado.php');
 require_once('../Sesion/header.php');
-$afiliado = new Afiliado();
 
+$afiliado = new Afiliado();
 if (isset($_POST['id'])) {
     $afiliado->insertarRegistro();
-    header("Location: index.php");
-    exit;
 }
 ?>
 
@@ -31,8 +29,16 @@ if (isset($_POST['id'])) {
         <form name="frmInsAfili" method="post" action="insertar.php" enctype="multipart/form-data">
             <input type="hidden" name="id" value="0">
             <div class="form-group">
-                <label>Nombre del Afiliado</label>
+                <label>Nombre</label>
                 <input type="text" name="nombre" id="nombre" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" name="apellido_materno" id="apellido_materno" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>RFC</label>
@@ -48,15 +54,23 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Número</label>
-                <input type="num" name="num" id="num" class="form-control" required> 
+                <input type="text" name="numero_Ext_Int" id="numero_Ext_Int" class="form-control" required> 
             </div>
             <div class="form-group">
                 <label>Códigp Postal</label>
-                <input type="num" name="cod_postal" id="cod_postal" class="form-control" required> 
+                <input type="number" name="codiigo_postal" id="codiigo_postal" class="form-control" required> 
             </div>
             <div class="form-group">
                 <label>Colonia</label>
                 <input type="text" name="colonia" id="colonia" class="form-control" required> 
+            </div>
+            <div class="form-group">
+                <label>Telefono</label>
+                <input type="number" name="telefono" id="telefono" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Correo</label>
+                <input type="email" name="correo" id="correo" class="form-control">
             </div>
             <div class="form-group">
                 <label>Expediente</label>
