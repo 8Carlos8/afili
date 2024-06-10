@@ -47,7 +47,10 @@ if (isset($_POST['id'])) {
                 <select name="id_rol" id="id_rol" class="form-control">
                     <option value="">Seleccionar Rol</option>
                     <?php foreach ($roles as $rol) { ?>
-                        <option value="<?= $rol->id ?>"><?= $rol->nombre_rol ?></option>
+                        <?php
+                            if ($rol->nombre_rol == "Promotor") { ?>
+                                <option value="<?= $rol->id ?>"><?= $rol->nombre_rol ?></option>
+                            <?php break; } ?>
                     <?php } ?>
                 </select>
             </div>

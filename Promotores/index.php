@@ -44,7 +44,9 @@ $roles = $rol->lista();
                 <th>Acciones</th>
             </thead>
             <tbody>
-                <?php foreach($promotores as $promotor) {?>
+                <?php                
+                    foreach($promotores as $promotor) {
+                ?>
                     <tr>
                         <td><span title="<?= $promotor->id ?>"><?= $promotor->id?></span></td>
                             <?php
