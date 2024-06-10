@@ -128,8 +128,8 @@ class Afiliado extends Modelo{
 
     function eliminaRegistro($id){
         $this->consulta = 
-        "delete from $this->tabla".
-        "where id = $this->id;";
+        "delete from $this->tabla ".
+        "where id = $id;";
 
         $this->ejecutaComandoIUD();
     }
