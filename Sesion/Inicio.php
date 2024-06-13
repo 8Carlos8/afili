@@ -1,11 +1,35 @@
 <?php 
 include_once("header.php"); 
+include_once("../Logica/Administrador.php");
+include_once("../Logica/Rol.php");
+include_once("../Logica/Promotor.php");
 include_once("../Logica/Usuario.php");
 
+$administrador = new Administrador();
+$promotor = new Promotor();
+$rol = new Rol();
 $usuario = new Usuario();
+$roles = $rol->lista();
+$listAdm = $administrador->lista();
+
 $username = $_SESSION['username'];
 $usuarios = $usuario->recuperarUsuario($username);
 
+$administrador = null; // Inicializa a null para evitar error
+
+if (isset($usuarios) && isset($usuarios->id)) { // Verifica si se recuperó el usuario
+  $rolEncontrado = null;
+  foreach ($roles as $rol) {
+    if ($rol->id == $usuarios->id_rol) { // Comprueba el rol del usuario
+      $rolEncontrado = $rol;
+      break;
+    }
+  }
+
+  if ($rolEncontrado && $rolEncontrado->nombre == "Administrador") { // Verifica si es administrador
+    $administrador = $usuarios; // Asigna el objeto del usuario al administrador
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,15 +65,16 @@ $usuarios = $usuario->recuperarUsuario($username);
 </head>
 <body>
     <?php 
-        //if ($usuario->rol == 1) {
-    ?>
-    <div class="container py-2">
+        if ($administrador != null) {
+            ?>
+            <div class="container py-2">
         <div class="form-group text-center">
             <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
         </div>
     </div>
-    <?php 
-        //}
+<?php 
+}
+
     ?>
     <div class="container py-2">
         <div class="form-group text-center">

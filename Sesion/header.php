@@ -58,15 +58,6 @@ if (isset($_SESSION['rol'])) {
             <li class="nav-item">
                 <a class="nav-link" href="logaut.php">Cerrar Sesión</a>
             </li>
-            <?php
-            /*
-            if ($rol == 1) {
-                // Mostrar esta opción solo si el rol del usuario es 1
-                echo '<li class="nav-item">
-                    <a class="nav-link" href="opcion-para-rol-1.php">Opción para Rol 1</a>
-                  </li>';
-            }*/
-            ?>
         </ul>
         <a class="navbar-brand"><?= $username ?></a>
     </nav>

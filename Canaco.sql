@@ -1,12 +1,12 @@
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(150),
-    password VARCHAR(150),
+    password VARCHAR(150)
 );
 
 CREATE TABLE rol(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre_rol VARCHAR(50),
+    nombre_rol VARCHAR(50)
 );
 
 CREATE TABLE administrador(
@@ -18,7 +18,8 @@ CREATE TABLE administrador(
     apellido_materno VARCHAR(250),
     correo VARCHAR(200),
     telefono CHAR(10),
-    FOREIGN KEY (id_rol) REFERENCES rol(id),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_rol) REFERENCES rol(id)
 );
 
 CREATE TABLE promotor(
@@ -32,7 +33,7 @@ CREATE TABLE promotor(
     telefono CHAR(10),
     siglas_promotor CHAR(5),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-    FOREIGN KEY (id_rol) REFERENCES rol(id),
+    FOREIGN KEY (id_rol) REFERENCES rol(id)
 );
 
 CREATE TABLE afiliado(
@@ -47,8 +48,8 @@ CREATE TABLE afiliado(
     codiigo_postal CHAR(5),
     colonia VARCHAR(250),
     telefono CHAR(10),
-    correo VARCHAR(200)
-    expediente BLOB,
+    correo VARCHAR(200),
+    expediente BLOB
 );
 
 CREATE TABLE pago(
@@ -73,5 +74,5 @@ CREATE TABLE pago(
     extemp DECIMAL,
     salubridad DECIMAL,
     FOREIGN KEY (id_afiliado) REFERENCES afiliado(id),
-    FOREIGN KEY (id_promotor) REFERENCES promotor(id),
+    FOREIGN KEY (id_promotor) REFERENCES promotor(id)
 );

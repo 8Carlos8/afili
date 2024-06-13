@@ -5,10 +5,10 @@
         session_unset();
         session_destroy();
         clearstatcache();
-        header('Location:'.'../Sesion/index.php');
+        header('Location:'.'../index.php');
     }
     session_unset();
         session_destroy();
         clearstatcache();
-        header('Location:'.'../Sesion/index.php');
+        header('Location:'.'../index.php');
 ?>

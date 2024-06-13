@@ -47,8 +47,8 @@
 </head>
 <body>
     <div class="container">
-        <form name="frmInsProd" method="post" action="insertar.php">
-        <input type="hidden" name="id" value="0">              
+        <form name="frmInsProd" method="post" action="../index.php">
+            <input type="hidden" name="id" value="0">              
 
                 <h1 align="center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-plus" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -78,19 +78,16 @@
                     </svg>
                     <label class="control-label">Contraseña</label>
                     <input type="password" name="password" class="form-control" required>
-                    <input type="hidden"name="rol" value="2"> 
                 </div>
 
                 <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
                 </div>
-                    
-                <div class="form-group text-center">
-                    <p>¿Ya tienes usuario?
-                    <a href="../Sesion/index.php" class="btn btn-primary">&nbsp;Iniciar Sesión</a>
-                </div>
-            
         </form>
+        <div class="form-group text-center">
+                    <p>¿Ya tienes usuario?
+                    <a href="../index.php" class="btn btn-primary">&nbsp;Iniciar Sesión</a>
+        </div>
     </div>
 </body>
 </html>
