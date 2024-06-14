@@ -6,14 +6,13 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     if ($usuario->recuperarUsuario($username)) {
-        if ($usuario->password == $password && $usuario->rol == 1) {
-            session_start();
+        if ($usuario->password == $password) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $_SESSION['username'] = $usuario->username;
-            $_SESSION['rol'] = 1;
-            header("Location: Sesion/Inicio.php");
-        } else if ($usuario->password == $password) {
-            session_start();
-            $_SESSION['username'] = $usuario->username;
+            $_SESSION['id'] = $usuario->id;
+            var_dump($_SESSION['id']);
             header("Location: Sesion/Inicio.php");
         } else {
             array_push($errores, "El usuario o contraseña son incorrectas");
@@ -33,7 +32,6 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Inicio de Sesión</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -78,18 +76,13 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
             margin-bottom: 10px;
         }
     </style>
-
 </head>
-
 <body>
-
-
     <header>
         <h1 class="titulo">
             <center>CANACO</center>
         </h1>
     </header>
-
 
     <div class="container">
         <?php if (isset($errores) && count($errores) > 0) { ?>
@@ -98,53 +91,25 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
             <?php } ?>
         <?php } ?>
 
-
         <form name="frmLogin" method="post" action="index.php">
-
             <h1 align="center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="12" r="9" />
+                    <circle cx="12" cy="10" r="3" />
+                    <path d="M6.75 16a8.5 8.5 0 0 1 10.5 0" />
                 </svg>
-                Iniciar Sesión
             </h1>
-
-
             <div class="form-group">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                </svg>
-                <label class="control-label">Usuario</label>
-                <input type="text" name="username" value="" class="form-control">
+                <label for="username">Nombre del usuario:</label>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
-
             <div class="form-group">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="44" height="44" viewBox="0 0 24 24" stroke-width="2.5" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
-                    <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-                    <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
-                </svg>
-                <label class="control-label">Contraseña</label>
-                <input type="password" name="password" value="" class="form-control">
+                <label for="password">Contraseña:</label>
+                <input type="password" class="form-control" id="password" name="password">
             </div>
-            
-            
-            <div class="form-group text-center">
-                <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
-                </div>
-                <p>¿No tienes usuario?
-                    <a href="Usuarios/insertar.php" class="btn btn-primary">&nbsp;Registrate</a>
-                </p>
-            </div>
-
+            <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
         </form>
     </div>
 </body>
-
 </html>

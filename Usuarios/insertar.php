@@ -47,7 +47,7 @@
 </head>
 <body>
     <div class="container">
-        <form name="frmInsProd" method="post" action="../index.php">
+        <form name="frmInsProd" method="post" action="insertar.php">
             <input type="hidden" name="id" value="0">              
 
                 <h1 align="center">

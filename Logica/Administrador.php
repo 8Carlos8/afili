@@ -25,6 +25,7 @@ class Administrador extends Modelo{
         $this->consulta = "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
         if (isset($dato)) {
+            $this->id = $dato->id;
             $this->id_usuario = $dato->id_usuario;
             $this->id_rol = $dato->id_rol;
             $this->nombre = $dato->nombre;

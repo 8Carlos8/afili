@@ -12,6 +12,9 @@ if (!isset($username)  || empty($username)) {
 if (isset($_SESSION['rol'])) {
     $rol = $_SESSION['rol'];
 }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>

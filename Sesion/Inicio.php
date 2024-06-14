@@ -9,28 +9,47 @@ $administrador = new Administrador();
 $promotor = new Promotor();
 $rol = new Rol();
 $usuario = new Usuario();
+$usuarios = $usuario->lista();
 $roles = $rol->lista();
-$listAdm = $administrador->lista();
+$administradores = $administrador->lista();
+$promotores = $promotor->lista();
 
-$username = $_SESSION['username'];
-$usuarios = $usuario->recuperarUsuario($username);
+$usuarioActual = null;
+$rolUsuarioActual = null;
 
-$administrador = null; // Inicializa a null para evitar error
-
-if (isset($usuarios) && isset($usuarios->id)) { // Verifica si se recuperó el usuario
-  $rolEncontrado = null;
-  foreach ($roles as $rol) {
-    if ($rol->id == $usuarios->id_rol) { // Comprueba el rol del usuario
-      $rolEncontrado = $rol;
-      break;
+foreach ($administradores as $administrador) {
+    if ($administrador->id_usuario == $_SESSION['id']) {
+        $usuarioActual = $administrador;
+        $rolUsuarioActual = 1;
+        
+        if (isset($_GET['idAd'])) {
+            $administrador->id = $_GET['idAd'];
+            $administrador->recuperarRegistro($administrador->id);
+        }
+        break;
+    } else {
+        $rolUsuarioActual = 0;
     }
-  }
+}
 
-  if ($rolEncontrado && $rolEncontrado->nombre == "Administrador") { // Verifica si es administrador
-    $administrador = $usuarios; // Asigna el objeto del usuario al administrador
-  }
+if ($usuarioActual == null) {
+    foreach ($promotores as $promotor) {
+        if ($promotor->id_usuario == $_SESSION['id']) {
+            $usuarioActual = $promotor;
+            $rolUsuarioActual = 2;
+            
+            if (isset($_GET['idPr'])) {
+                $promotor->id = $_GET['idPr'];
+                $promotor->recuperarRegistro($promotor->id);
+            }
+            break;
+        } else {
+            $rolUsuarioActual = 0;
+        }
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,48 +83,40 @@ if (isset($usuarios) && isset($usuarios->id)) { // Verifica si se recuperó el u
     </style>
 </head>
 <body>
-    <?php 
-        if ($administrador != null) {
-            ?>
-            <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
+    <?php if ($rolUsuarioActual == 1) { ?>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
+            </div>
         </div>
-    </div>
-<?php 
-}
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="../Promotores/index.php" class="btn btn-success form-control">Promotores</a>
+            </div>
+        </div>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="../Roles/index.php" class="btn btn-success form-control">Roles</a>
+            </div>
+        </div>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="../Administradores/index.php" class="btn btn-success form-control">Administradores</a>
+            </div>
+        </div>
+    <?php } ?>
 
-    ?>
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="../Afiliados/index.php" class="btn btn-success form-control">Afiliados</a>
+    <?php if ($rolUsuarioActual == 2 || $rolUsuarioActual == 1 || $rolUsuarioActual == 0) { ?>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="../Afiliados/index.php" class="btn btn-success form-control">Afiliados</a>
+            </div>
         </div>
-    </div>
-    <?php 
-        //if ($usuario->rol == 1) {
-    ?>
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="../Promotores/index.php" class="btn btn-success form-control">Promotores</a>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="" class="btn btn-success form-control">Pagos</a>
+            </div>
         </div>
-    </div>
-    <?php 
-        //}
-    ?>        
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="" class="btn btn-success form-control">Pagos</a>
-        </div>
-    </div>
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="../Roles/index.php" class="btn btn-success form-control">Roles</a>
-        </div>
-    </div>
-    <div class="container py-2">
-        <div class="form-group text-center">
-            <a href="../Administradores/index.php" class="btn btn-success form-control">Administradores</a>
-        </div>
-    </div>
+    <?php } ?>
 </body>
 </html>
