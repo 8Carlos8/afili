@@ -39,8 +39,9 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
     <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
-            background-color: #8cc4df;
+            background-color: #111D7E;
             font-family: 'Arial', sans-serif;
+            color: white;
         }
 
         .container {
@@ -55,6 +56,7 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 
         .form-group {
             margin-bottom: 20px;
+            color: black
         }
 
         .btn-primary {
@@ -110,6 +112,11 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
             </div>
             <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
         </form>
+        <br>
+        <div class="form-group text-center">
+                <p>¿No tienes usuario?
+                <a href="Usuarios/insertar.php" class="btn btn-primary">&nbsp;Registrate</a>
+        </div>
     </div>
 </body>
 </html>
