@@ -52,7 +52,7 @@ class Usuario extends Modelo{
         $this->consulta = 
         "update $this->tabla set ".
         "username = '$this->username', ".
-        "password = '$this->password', ".
+        "password = '$this->password' ".
         "where username = '$this->username'";
 
         $this->ejecutaComandoIUD();

@@ -26,9 +26,8 @@ $roles = $rol->lista();
 </head>
 <body>
     <div class="container">
-    <div class="form-group text-center">
-            <i class="fas fa-folder-plus"></i>
-            <a href="insertar.php" class="btn-btn-succes">Ingresar a un nuevo afiliado</a>
+        <div class="form-group text-center">
+            <a href="insertar.php" class="btn btn-success">Ingresar Nuevo Afiliado</a>
         </div>
         <table class="table table-striped">
             <thead>
