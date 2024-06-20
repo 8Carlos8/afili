@@ -1,5 +1,6 @@
-<?php require_once('Modelo.php'); ?>
-<?php
+<?php 
+require_once('Modelo.php'); 
+
 class Afiliado extends Modelo{
     public $id;
     public $nombre;
