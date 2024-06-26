@@ -104,6 +104,11 @@ if ($usuarioActual == null) {
                 <a href="../Administradores/index.php" class="btn btn-success form-control">Administradores</a>
             </div>
         </div>
+        <div class="container py-2">
+            <div class="form-group text-center">
+                <a href="" class="btn btn-success form-control">Licencias</a>
+            </div>
+        </div>
     <?php } ?>
 
     <?php if ($rolUsuarioActual == 2 || $rolUsuarioActual == 1 || $rolUsuarioActual == 0) { ?>
