@@ -1,0 +1,7 @@
+body {
+    background-color: white;
+    font-family: 'Arial', sans-serif;
+}
+.btn-space {
+    margin-block-end: 10px;
+}

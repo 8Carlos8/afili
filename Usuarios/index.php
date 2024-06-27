@@ -20,6 +20,7 @@ $usuarios = $usuario->lista();
 </head>
 <body>
     <div class="container">
+        <br>
         <div class="form-group text-center">
             <a href="insertar.php" class="btn btn-success">Ingresa Nuevo Usuario</a>
         </div>

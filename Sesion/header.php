@@ -26,43 +26,43 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <style>
         body {
-            background-color: #2d2d2d;
+            background-color: #111D7E;
             font-family: 'Arial', sans-serif;
         }
 
         .navbar {
-            background-color: #333;
+            background-color: #111D7E;
         }
 
         .navbar-brand {
-            color: #ffc107;
+            color: #111D7E;
         }
 
         .nav-link {
-            color: #fff;
+            color: #111D7E;
             transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #ffc107;
+            color: #111D7E;
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="../Sesion/Inicio.php">Menu Principal</a>
+                <a class="nav-link" href="../Sesion/Inicio.php" style="color: white;">Menu Principal</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../Usuarios/actualizar.php?username=<?= $usuario->username ?>">Cambio de Datos</a>
+                <a class="nav-link" href="../Usuarios/actualizar.php?username=<?= $usuario->username ?>" style="color: white;">Cambio de Datos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="logaut.php">Cerrar Sesión</a>
+                <a class="nav-link" href="logaut.php" style="color: white;">Cerrar Sesión</a>
             </li>
         </ul>
-        <a class="navbar-brand"><?= $username ?></a>
+        <a class="navbar-brand" style="color: white;"><?= $username ?></a>
     </nav>
 </body>
 

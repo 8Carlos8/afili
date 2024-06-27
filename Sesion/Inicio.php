@@ -106,7 +106,7 @@ if ($usuarioActual == null) {
         </div>
         <div class="container py-2">
             <div class="form-group text-center">
-                <a href="" class="btn btn-success form-control">Licencias</a>
+                <a href="../Licencias/index.php" class="btn btn-success form-control">Licencias</a>
             </div>
         </div>
     <?php } ?>

@@ -32,7 +32,7 @@ if (isset($_POST['id'])) {
     </style>
 </head>
 <body>
-    <div class="container py-2">
+    <div class="container py-3">
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista Promotores</a>
         </div>
@@ -61,30 +61,30 @@ if (isset($_POST['id'])) {
                 </div>
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?= $promotor->nombre ?>">
+                    <input type="text" name="nombre" id="nombre" value="<?= $promotor->nombre ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" id="apellido_paterno" value="<?= $promotor->apellido_paterno ?>">
+                    <input type="text" name="apellido_paterno" id="apellido_paterno" value="<?= $promotor->apellido_paterno ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" id="apellido_materno" value="<?= $promotor->apellido_materno ?>">
+                    <input type="text" name="apellido_materno" id="apellido_materno" value="<?= $promotor->apellido_materno ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="email" name="correo" id="correo" value="<?= $promotor->correo ?>">
+                    <input type="email" name="correo" id="correo" value="<?= $promotor->correo ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Telefono</label>
-                    <input type="number" name="telefono" id="telefono" value="<?= $promotor->telefono ?>">
+                    <input type="number" name="telefono" id="telefono" value="<?= $promotor->telefono ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Siglas Promotor</label>
-                    <input type="text" id="siglas_promotor" name="siglas_promotor" value="<?= $promotor->siglas_promotor ?>" required>
+                    <input type="text" id="siglas_promotor" name="siglas_promotor" value="<?= $promotor->siglas_promotor ?>" class="form-control">
                 </div>
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
+                    <button type="submit" class="btn btn-primary">&nbsp;Actualizar</button>
                 </div>
             </table>
         </form>

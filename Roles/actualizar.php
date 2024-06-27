@@ -26,7 +26,7 @@ if (isset($_POST['id'])) {
     </style>
 </head>
 <body>
-    <div class="container py-2">
+    <div class="container py-3">
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista de Roles</a>
         </div>
@@ -35,10 +35,10 @@ if (isset($_POST['id'])) {
             <table class="table">
                 <div class="form-group">
                     <label>Nombre del Rol</label>
-                    <input type="text" name="nombre_rol" id="nombre_rol" value="<?= $rol->nombre_rol ?>" required>
+                    <input type="text" name="nombre_rol" id="nombre_rol" value="<?= $rol->nombre_rol ?>" class="form-control" required>
                 </div>
                 <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
+                <button type="submit" class="btn btn-primary">&nbsp;Actualizar</button>
                 </div>
             </table>
         </form>

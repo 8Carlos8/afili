@@ -76,3 +76,10 @@ CREATE TABLE pago(
     FOREIGN KEY (id_afiliado) REFERENCES afiliado(id),
     FOREIGN KEY (id_promotor) REFERENCES promotor(id)
 );
+
+CREATE TABLE licencia(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_afiliado INT,
+    licencia BLOB,
+    FOREIGN KEY (id_afiliado) REFERENCES afiliado(id)
+);

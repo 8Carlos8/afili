@@ -32,7 +32,7 @@ if (isset($_POST['id'])) {
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container py-3">
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista de Administradores</a>
         </div>
@@ -61,27 +61,26 @@ if (isset($_POST['id'])) {
                 </div>
                 <div class="form-group">
                     <label>Nombre</label>
-                    <input type="text" name="nombre" id="nombre" value="<?= $administrador->nombre ?>">
+                    <input type="text" name="nombre" id="nombre" value="<?= $administrador->nombre ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Apellido Paterno</label>
-                    <input type="text" name="apellido_paterno" id="apellido_paterno" value="<?= $administrador->apellido_paterno ?>">
+                    <input type="text" name="apellido_paterno" id="apellido_paterno" value="<?= $administrador->apellido_paterno ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Apellido Materno</label>
-                    <input type="text" name="apellido_materno" id="apellido_materno" value="<?= $administrador->apellido_materno ?>">
+                    <input type="text" name="apellido_materno" id="apellido_materno" value="<?= $administrador->apellido_materno ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Correo</label>
-                    <input type="email" name="correo" id="correo" value="<?= $administrador->correo ?>">
+                    <input type="email" name="correo" id="correo" value="<?= $administrador->correo ?>" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Telefono</label>
-                    <input type="number" name="telefono" id="telefono" value="<?= $administrador->telefono ?>">
+                    <input type="number" name="telefono" id="telefono" value="<?= $administrador->telefono ?>" class="form-control">
                 </div>
                 <div class="form-group text-center">
-                    <a href="index.php">Regresar</a>
-                    <button class="btn btn-primary btn-lg btn-block">&nbsp; Registrar</button>
+                    <button class="btn btn-primary">&nbsp;Actualizar</button>
                 </div>
             </table>
         </form>

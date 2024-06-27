@@ -27,7 +27,7 @@ if (isset($_POST['id'])) {
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container py-3">
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista de Administradores</a>
         </div>
@@ -56,27 +56,26 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" name="nombre" id="nombre" required>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del Administrador" required>
             </div>
             <div class="form-group">
                 <label>Apellido Paterno</label>
-                <input type="text" name="apellido_paterno" id="apellido_paterno" required>
+                <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control" placeholder="Apellido Paterno del Administrador" required>
             </div>
             <div class="form-group">
             <label>Apellido Materno</label>
-                <input type="text" name="apellido_materno" id="apellido_materno" required>
+                <input type="text" name="apellido_materno" id="apellido_materno" class="form-control" placeholder="Apellido Materno del Administrador" required>
             </div>
             <div class="form-group">
                 <label>Correo</label>
-                <input type="email" name="correo" id="correo">
+                <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo del Administrador">
             </div>
             <div class="form-group">
                 <label>Telefono</label>
-                <input type="number" name="telefono" id="telefono" required>
+                <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Teléfono del Administrador" required>
             </div>
             <div class="form-group text-center">
-                <a href="index.php">Regresar</a>
-                <button class="btn btn-primary btn-lg btn-block">&nbsp; Registrar</button>
+                <button class="btn btn-primary">&nbsp;Registrar</button>
             </div>
         </form>
     </div>

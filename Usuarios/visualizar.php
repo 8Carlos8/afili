@@ -15,7 +15,7 @@ $usuario = new Usuario();
     <title>Modificar Usuario</title>
     <style>
         body {
-            background-color: #f06c6c;
+            background-color: white;
             font-family: 'Arial', sans-serif;
         }
     </style>
@@ -23,7 +23,7 @@ $usuario = new Usuario();
 <body>
 <div class="container py-2">
     <div class="form-group text-center">
-        <a href="index.php" class="btn btn-success"><img src="../images/view-list.svg">&nbsp;Lista de Usuario</a>
+        <a href="index.php" class="btn btn-success">&nbsp;Lista de Usuario</a>
     </div>
     <table class="table">
 

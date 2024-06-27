@@ -19,31 +19,33 @@ $roles = $rol->lista();
     </style>
 </head>
 <body>
-<div class="form-group text-center">
+    <div class="container-fluid py-3">
+        <div class="form-group text-center">
             <i class="fas fa-folder-plus"></i>
-            <a href="insertar.php" class="btn-btn-succes">Ingresar un nuevo Rol</a>
+            <a href="insertar.php" class="btn btn-success">Ingresar un nuevo Rol</a>
         </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre del Rol</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($roles as $rol) { ?>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td><span title="<?= $rol->id ?>"><?= $rol->id ?></span></td>
-                    <td><span title="<?= $rol->nombre_rol ?>"><?= $rol->nombre_rol ?></span></td>
-                    <td>
-                        <a href="visualizar.php?id=<?= $rol->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
-                        <a href="actualizar.php?id=<?= $rol->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Rol</a>&nbsp;
-                        <a href="eliminar.php?id=<?= $rol->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
-                    </td>
+                    <th>ID</th>
+                    <th>Nombre del Rol</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($roles as $rol) { ?>
+                    <tr>
+                        <td><span title="<?= $rol->id ?>"><?= $rol->id ?></span></td>
+                        <td><span title="<?= $rol->nombre_rol ?>"><?= $rol->nombre_rol ?></span></td>
+                        <td>
+                            <a href="visualizar.php?id=<?= $rol->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
+                            <a href="actualizar.php?id=<?= $rol->id ?>" class="btn btn-info" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Rol</a>&nbsp;
+                            <a href="eliminar.php?id=<?= $rol->id ?>" class="btn btn-warning" title='Eliminar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

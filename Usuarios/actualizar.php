@@ -19,7 +19,7 @@ if (isset($_POST['username'])) {
     <title>Modificar Usuario</title>
     <style>
         body {
-            background-color: #f06c6c;
+            background-color: white;
             font-family: 'Arial', sans-serif;
         }
     </style>
@@ -27,23 +27,23 @@ if (isset($_POST['username'])) {
 <body>
 <div class="container py-2">
     <div class="form-group text-center">
-        <a href="index.php" class="btn btn-success"><img src="../images/view-list.svg">&nbsp;Lista de Usuario</a>
+        <a href="index.php" class="btn btn-success">&nbsp;Lista de Usuario</a>
     </div>
     <form name="frmModProd" method="post" action="actualizar.php">
         <input type="hidden" name="id" value="<?= $usuario->username ?>">
         <table class="table">
                 <div class="form-group">
                     <label>Usuario</label>
-                    <input type="text" name="username" value="<?= $usuario->username ?>" required>
+                    <input type="text" name="username" value="<?= $usuario->username ?>" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" name="password" value="<?= $usuario->password ?>" required>
+                    <input type="password" name="password" value="<?= $usuario->password ?>" class="form-control" required>
                 </div>
 
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
+                    <button type="submit" class="btn btn-primary btn-lg">&nbsp;Actualizar</button>
                 </div>
         </table>
     </form>

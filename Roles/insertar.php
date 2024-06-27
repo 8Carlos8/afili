@@ -21,7 +21,7 @@ if (isset($_POST['id'])) {
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container py-3">
         <div class="form-group text-center">
             <a href="index.php" class="btn btn-success">&nbsp;Lista de Administradores</a>
         </div>
@@ -29,11 +29,10 @@ if (isset($_POST['id'])) {
             <input type="hidden" name="id" value="0">
             <div class="form-group">
                 <label>Nombre del Rol</label>
-                <input type="text" name="nombre_rol" id="nombre_rol" required>
+                <input type="text" name="nombre_rol" id="nombre_rol" class="form-control" required>
             </div>
             <div class="form-group text-center">
-                <a href="index.php">Regresar</a>
-                <button class="btn btn-primary btn-lg btn-block">&nbsp; Registrar</button>
+                <button class="btn btn-primary">&nbsp;Registrar</button>
             </div>
         </form>
     </div>

@@ -63,7 +63,7 @@ class Afiliado extends Modelo{
         $file_name = $_FILES['expediente']['name'];
         $this->file_name = $file_name;
         $file_tmp = $_FILES['expediente']['tmp_name'];
-        $route = "../Archivos/".$file_name;
+        $route = "../Archivos/Expedientes/".$file_name;
         move_uploaded_file($file_tmp, $route);
 
         $this->consulta = 
@@ -104,7 +104,7 @@ class Afiliado extends Modelo{
     
         // Mover el archivo a la carpeta deseada
         $file_tmp = $_FILES['expediente']['tmp_name'];
-        $route = "../Archivos/".$this->expediente;
+        $route = "../Archivos/Expedientes/".$this->expediente;
         move_uploaded_file($file_tmp, $route);
     
         $this->consulta = 

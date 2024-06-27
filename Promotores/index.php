@@ -22,12 +22,15 @@ $roles = $rol->lista();
             background-color: white;
             font-family: 'Arial', sans-serif;
         }
+        .btn-space {
+            margin-block-end: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid py-3">
         <div class="form-group text-center">
-            <a href="insertar.php" class="btn btn-success">Ingresar Nuevo Afiliado</a>
+            <a href="insertar.php" class="btn btn-success">Ingresar Nuevo Promotor</a>
         </div>
         <table class="table table-striped">
             <thead>
@@ -49,7 +52,6 @@ $roles = $rol->lista();
                     <tr>
                         <td><span title="<?= $promotor->id ?>"><?= $promotor->id?></span></td>
                             <?php
-                                // Buscar el usuario correspondiente
                                 $usuarioEncontrado = null;
                                 foreach ($usuarios as $usuario) {
                                     if ($usuario->id == $promotor->id_usuario) {
@@ -60,7 +62,6 @@ $roles = $rol->lista();
                             ?>
                         <td><span title="<?= $promotor->id_usuario ?>"><?= $usuarioEncontrado ? $usuarioEncontrado->username : 'Usuario no encontrado' ?></span></td>
                             <?php
-                                // Buscar el rol correspondiente
                                 $rolEncontrado = null;
                                 foreach ($roles as $rol) {
                                     if ($rol->id == $promotor->id_rol) {
@@ -77,9 +78,9 @@ $roles = $rol->lista();
                         <td><span title="<?= $promotor->telefono ?>"><?= $promotor->telefono ?></span></td>
                         <td><span title="<?= $promotor->siglas_promotor ?>"><?= $promotor->siglas_promotor ?></span></td>
                         <td>
-                        <a href="visualizar.php?id=<?= $promotor->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
-                        <a href="actualizar.php?id=<?= $promotor->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Promotor</a>&nbsp;
-                        <a href="eliminar.php?id=<?= $promotor->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                        <a href="visualizar.php?id=<?= $promotor->id ?>" class="btn btn-primary btn-space" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
+                        <a href="actualizar.php?id=<?= $promotor->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Afiliado</a>&nbsp;
+                        <a href="eliminar.php?id=<?= $promotor->id ?>" class="btn btn-warning" title='Eliminar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
                         </td>
                     </tr>
                     <?php } ?>
