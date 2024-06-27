@@ -17,13 +17,8 @@ if (isset($_POST['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Editar Afiliado</title>
-    <style>
-        body{
-            background-color: white;
-            font-family: 'Arial', sans-serif;
-        }
-    </style>
 </head>
 <body>
     <div class="container py-3">
@@ -83,13 +78,13 @@ if (isset($_POST['id'])) {
                         <br>
                         <span><?= $afiliado->expediente ?></span>
                         <br>
-                        <a href="../Archivos/<?= $afiliado->expediente ?>" target="_blank">Ver Expediente</a>
+                        <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?>" target="_blank">Ver Expediente</a>
                     <?php } ?>
                     <input type="file" name="expediente" id="expediente" class="form-control" accept="application/pdf">
                 </div>
                 <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">&nbsp;ENVIAR</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary">&nbsp;Actualizar</button>
+                </div>
             </table>
         </form>
     </div>

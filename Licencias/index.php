@@ -1,5 +1,5 @@
 <?php
-require_once('../Logica/Licencias.php');
+require_once('../Logica/Licencia.php');
 require_once('../Logica/Afiliado.php');
 require_once('../Sesion/header.php');
 
@@ -13,16 +13,8 @@ $afiliados = $afiliado->lista();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Licencias</title>
-    <style>
-        body {
-            background-color: white;
-            font-family: 'Arial', sans-serif;
-            }
-        .btn-space {
-            margin-block-end: 10px;
-            }
-    </style>
 </head>
 <body>
     <div class="container py-3">
@@ -43,7 +35,7 @@ $afiliados = $afiliado->lista();
                 ?>
                 <tr>
                     <td><span title="<?= $licencia->id ?>"><?= $licencia->id ?></span></td>
-                    <td><span title=""></span></td>
+                    <td><span title="<?= $licencia->id_afiliado ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno?></span></td>
                     <td><span title="<?= $licencia->licencia ?>"><?= $licencia->licencia . "" ?>
                     <br>
                             <a href="../Archivos/Licencias/<?= $licencia->licencia ?>" type="application/pdf" target="_blank">Ver Licencia</a>

@@ -13,14 +13,9 @@ if (isset($_POST['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Insertar Afiliado</title>
 </head>
-<style>
-    body {
-            background-color: white;
-            font-family: 'Arial', sans-serif;
-        }
-</style>
 <body>
     <div class="container py-3">
         <div class="form-group text-center">
@@ -80,10 +75,6 @@ if (isset($_POST['id'])) {
                 <button type="submit" class="btn btn-primary">&nbsp;Registrar</button>
             </div>
         </form>
-        <div></div>
-    </div>
-    <div>
-
     </div>
 </body>
 </html>

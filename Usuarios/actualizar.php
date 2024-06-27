@@ -16,13 +16,8 @@ if (isset($_POST['username'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Modificar Usuario</title>
-    <style>
-        body {
-            background-color: white;
-            font-family: 'Arial', sans-serif;
-        }
-    </style>
 </head>
 <body>
 <div class="container py-2">
@@ -36,14 +31,12 @@ if (isset($_POST['username'])) {
                     <label>Usuario</label>
                     <input type="text" name="username" value="<?= $usuario->username ?>" class="form-control" required>
                 </div>
-
                 <div class="form-group">
                     <label>Contraseña</label>
                     <input type="password" name="password" value="<?= $usuario->password ?>" class="form-control" required>
                 </div>
-
                 <div class="form-group text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">&nbsp;Actualizar</button>
+                    <button type="submit" class="btn btn-primary">&nbsp;Actualizar</button>
                 </div>
         </table>
     </form>

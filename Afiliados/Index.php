@@ -10,17 +10,9 @@ $afiliados = $afiliado->lista();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Afiliados</title>
 </head>
-<style>
-    body {
-            background-color: white;
-            font-family: 'Arial', sans-serif;
-        }
-        .btn-space {
-            margin-block-end: 10px;
-        }
-</style>
 <body>
     <div class="container-fluid py-3">
         <div class="form-group text-center">
