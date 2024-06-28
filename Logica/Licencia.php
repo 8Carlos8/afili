@@ -34,7 +34,7 @@ class Licencia extends Modelo{
         $file_name = $_FILES['licencia']['name'];
         $this->file_name = $file_name;
         $file_tmp = $_FILES['licencia']['tmp_name'];
-        $route = "../Archivos/Licencias".$file_name;
+        $route = "../Archivos/Licencias/".$file_name;
         move_uploaded_file($file_tmp, $route);
 
         $this->consulta =
@@ -53,7 +53,7 @@ class Licencia extends Modelo{
         $file_name = $_FILES['licencia']['name'];
         $this->file_name = $file_name;
         $file_tmp = $_FILES['licencia']['tmp_name'];
-        $route = "../Archivos/Licencias".$file_name;
+        $route = "../Archivos/Licencias/".$file_name;
         move_uploaded_file($file_tmp, $route);
 
         $this->consulta =

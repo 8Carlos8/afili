@@ -54,7 +54,7 @@ $afiliados = $afiliado->lista();
                             <td><spam title="<?= $afiliado->correo ?>"><?= $afiliado->correo ?></spam></td>
                             <td><spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
                             <br>
-                                    <a href="../Archivos/<?= $afiliado->expediente ?> " type="application/pdf" target="_blank">Ver Expediente</a>
+                                    <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?> " type="application/pdf" target="_blank">Ver Expediente</a>
                                 </spam></td>
                             <td>
                             <a href="visualizar.php?id=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;

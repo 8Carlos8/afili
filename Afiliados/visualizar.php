@@ -131,7 +131,7 @@ if ($_GET['id']) {
                 <td>
                     <spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
                         <br>
-                                <a href="../Archivos/<?= $afiliado->expediente ?>" type="application/pdf" target="_blank">Ver Expediente</a>
+                                <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?>" type="application/pdf" target="_blank">Ver Expediente</a>
                             </spam></td>
                 </td>
             </tr>
