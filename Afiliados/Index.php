@@ -40,22 +40,22 @@ $afiliados = $afiliado->lista();
                 <tbody>
                     <?php foreach($afiliados as $afiliado) {?>
                         <tr>
-                            <td><spam title="<?= $afiliado->id ?>"><?= $afiliado->id ?></spam></td>
-                            <td><spam title="<?= $afiliado->nombre ?>"><?= $afiliado->nombre ?></spam></td>
-                            <td><spam title="<?= $afiliado->apellido_paterno ?>"><?= $afiliado->apellido_paterno ?></spam></td>
-                            <td><spam title="<?= $afiliado->apellido_materno ?>"><?= $afiliado->apellido_materno ?></spam></td>
-                            <td><spam title="<?= $afiliado->rfc ?>"><?= $afiliado->rfc ?></spam></td>
-                            <td><spam title="<?= $afiliado->curp ?>"><?= $afiliado->curp ?></spam></td>
-                            <td><spam title="<?= $afiliado->direccion ?>"><?= $afiliado->direccion ?></spam></td>
-                            <td><spam title="<?= $afiliado->numero_Ext_Int ?>"><?= $afiliado->numero_Ext_Int ?></spam></td>
-                            <td><spam title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></spam></td>
-                            <td><spam title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></spam></td>
-                            <td><spam title="<?= $afiliado->telefono ?>"><?= $afiliado->telefono ?></spam></td>
-                            <td><spam title="<?= $afiliado->correo ?>"><?= $afiliado->correo ?></spam></td>
-                            <td><spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
+                            <td><span title="<?= $afiliado->id ?>"><?= $afiliado->id ?></span></td>
+                            <td><span title="<?= $afiliado->nombre ?>"><?= $afiliado->nombre ?></span></td>
+                            <td><span title="<?= $afiliado->apellido_paterno ?>"><?= $afiliado->apellido_paterno ?></span></td>
+                            <td><span title="<?= $afiliado->apellido_materno ?>"><?= $afiliado->apellido_materno ?></span></td>
+                            <td><span title="<?= $afiliado->rfc ?>"><?= $afiliado->rfc ?></span></td>
+                            <td><span title="<?= $afiliado->curp ?>"><?= $afiliado->curp ?></span></td>
+                            <td><span title="<?= $afiliado->direccion ?>"><?= $afiliado->direccion ?></span></td>
+                            <td><span title="<?= $afiliado->numero_Ext_Int ?>"><?= $afiliado->numero_Ext_Int ?></span></td>
+                            <td><span title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></span></td>
+                            <td><span title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></span></td>
+                            <td><span title="<?= $afiliado->telefono ?>"><?= $afiliado->telefono ?></span></td>
+                            <td><span title="<?= $afiliado->correo ?>"><?= $afiliado->correo ?></span></td>
+                            <td><span title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
                             <br>
                                     <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?> " type="application/pdf" target="_blank">Ver Expediente</a>
-                                </spam></td>
+                                </span></td>
                             <td>
                             <a href="visualizar.php?id=<?= $afiliado->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                             <a href="actualizar.php?id=<?= $afiliado->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Afiliado</a>&nbsp;
