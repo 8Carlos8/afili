@@ -5,7 +5,11 @@ require_once('../Logica/Promotor.php');
 require_once('../Sesion/header.php');
 
 $pago = new Pago();
+$afiliado = new Afiliado();
+$promotor = new Promotor();
 $pagos = $pago->lista();
+$afiliados = $afiliado->lista();
+$promotores = $promotor->lista();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,11 +53,29 @@ $pagos = $pago->lista();
                 <?php foreach($pagos as $pago) {?>
                     <tr>
                         <td><span title="<?= $pago->id ?>"><?= $pago->id ?></span></td>
-                        <td><span title="<?= $pago->id_afiliado ?>"><?= $pago->id_afiliado ?></span></td>
-                        <td><span title="<?= $pago->id_promotor ?>"><?= $pago->id_promotor ?></span></td>
-                        <td><span title="<?= $pago->codigo_fac ?>"><?= $pago->codigo_fac ?></span></td>
+                        <td><span title="<?= $pago->id_afiliado ?>">
+                            <?php
+                            foreach ($afiliados as $afiliado) {
+                                if ($afiliado->id == $pago->id_afiliado) {
+                                    echo $afiliado->nombre;
+                                    break;
+                                }
+                            }
+                            ?>
+                        </span></td>
+                        <td><span title="<?= $pago->id_promotor ?>">
+                            <?php
+                            foreach ($promotores as $promotor) {
+                                if ($promotor->id == $pago->id_promotor) {
+                                    echo $promotor->nombre;
+                                    break;
+                                }
+                            }
+                            ?>
+                        <td><span title="<?= $pago->codigo_factu ?>"><?= $pago->codigo_factu ?></span></td>
                         <td><span title="<?= $pago->folio ?>"><?= $pago->folio ?></span></td>
                         <td><span title="<?= $pago->nombre_comercial ?>"><?= $pago->nombre_comercial ?></span></td>
+                        <td><span title="<?= $pago->giro ?>"><?= $pago->giro ?></span></td>
                         <td><span title="<?= $pago->giro ?>"><?= $pago->giro2 ?></span></td>
                         <td><span title="<?= $pago->localidad ?>"><?= $pago->localidad ?></span></td>
                         <td><span title="<?= $pago->pago_afiliacion ?>"><?= $pago->pago_afiliacion ?></span></td>

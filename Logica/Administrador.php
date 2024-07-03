@@ -34,6 +34,7 @@ class Administrador extends Modelo{
             $this->correo = $dato->correo;
             $this->telefono = $dato->telefono;
         }
+        return $dato;
     }
 
     function insertarRegistro(){

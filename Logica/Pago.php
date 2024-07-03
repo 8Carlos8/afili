@@ -5,7 +5,7 @@ class Pago extends Modelo{
     public $id;
     public $id_afiliado;
     public $id_promotor;
-    public $codigo_fac;
+    public $codigo_factu;
     public $folio;
     public $nombre_comercial;
     public $giro;
@@ -35,6 +35,27 @@ class Pago extends Modelo{
     function recuperarRegistro($id){
         $this->consulta= "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
+        if (isset($dato)) {
+            $this->id = $dato->id;
+            $this->id_afiliado = $dato->id_afiliado;
+            $this->id_promotor = $dato->id_promotor;
+            $this->codigo_factu = $dato->codigo_factu;
+            $this->folio = $dato->folio;
+            $this->nombre_comercial = $dato->nombre_comercial;
+            $this->giro = $dato->giro;
+            $this->giro2 = $dato->giro2;
+            $this->localidad = $dato->localidad;
+            $this->pago_afiliacion = $dato->pago_afiliacion;
+            $this->estado = $dato->estado;
+            $this->direccion = $dato->direccion;
+            $this->calle1 = $dato->calle1;
+            $this->calle2 = $dato->calle2;
+            $this->fecha = $dato->fecha;
+            $this->form = $dato->form;
+            $this->pago_c = $dato->pago_c;
+            $this->extemp = $dato->extemp;
+            $this->salubridad = $dato->salubridad;
+        }
         return $dato;
     }
 
@@ -42,7 +63,7 @@ class Pago extends Modelo{
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
         $this->id_promotor = $_POST['id_promotor'];
-        $this->codigo_fac = $_POST['codigo_fac'];
+        $this->codigo_factu = $_POST['codigo_factu'];
         $this->folio = $_POST['folio'];
         $this->nombre_comercial = $_POST['nombre_comercial'];
         $this->giro = $_POST['giro'];
@@ -61,11 +82,11 @@ class Pago extends Modelo{
 
         $this->consulta = 
         "insert into $this->tabla 
-        (id_afiliado, id_promotor, codigo_fac, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad) ".
+        (id_afiliado, id_promotor, codigo_factu, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad) ".
         "values (" .
         "$this->id_afiliado,".
         "$this->id_promotor,".
-        "$this->codigo_fac,".
+        "$this->codigo_factu,".
         "$this->folio,".
         "'$this->nombre_comercial',".
         "'$this->giro',".
@@ -73,22 +94,23 @@ class Pago extends Modelo{
         "'$this->localidad',".
         "$this->pago_afiliacion,".
         "'$this->estado',".
-        "$this->direccion,".
-        "$this->calle1,".
+        "'$this->direccion',".
+        "'$this->calle1',".
         "'$this->calle2',".
         "'$this->fecha',".
+        "$this->form,".
         "$this->pago_c,".
-        "'$this->extemp',". 
-        "'$this->salubridad');";
+        "$this->extemp,". 
+        "$this->salubridad);";
 
-        $this->ejecutarComandoIUD();
+        $this->ejecutaComandoIUD();
     }
 
     function actualizarRegistro(){
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
         $this->id_promotor = $_POST['id_promotor'];
-        $this->codigo_fac = $_POST['codigo_fac'];
+        $this->codigo_factu = $_POST['codigo_factu'];
         $this->folio = $_POST['folio'];
         $this->nombre_comercial = $_POST['nombre_comercial'];
         $this->giro = $_POST['giro'];
@@ -107,27 +129,27 @@ class Pago extends Modelo{
 
         $this->consulta =
         "update $this->tabla set ".
-        "id_afiliado = $this->id_afiliado,".
-        "id_promotor = $this->id_promotor,".
-        "codigo_fac = '$this->codigo_fac',".
-        "folio = $this->folio,".
-        "nombre_comercial = '$this->nombre_comercial',".
-        "giro = '$this->giro',".
-        "giro2 = '$this->giro2',".
-        "localidad = '$this->localidad',".
-        "pago_afiliacion = $this->pago_afiliacion,".
-        "estado = '$this->estado',".
-        "direccion = '$this->direccion',".
-        "calle1 = '$this->calle1',".
-        "calle2 = '$this->calle2',".
-        "fecha = '$this->fecha',".
-        "form = $this->form,".
-        "pago_c = $this->pago_c,".
-        "extemp = $this->extemp,".
-        "salubridad = $this->salubridad,".
+        "id_afiliado = $this->id_afiliado, ".
+        "id_promotor = $this->id_promotor, ".
+        "codigo_factu = $this->codigo_factu, ".
+        "folio = $this->folio, ".
+        "nombre_comercial = '$this->nombre_comercial', ".
+        "giro = '$this->giro', ".
+        "giro2 = '$this->giro2', ".
+        "localidad = '$this->localidad', ".
+        "pago_afiliacion = $this->pago_afiliacion, ".
+        "estado = '$this->estado', ".
+        "direccion = '$this->direccion', ".
+        "calle1 = '$this->calle1', ".
+        "calle2 = '$this->calle2', ".
+        "fecha = '$this->fecha', ".
+        "form = $this->form, ".
+        "pago_c = $this->pago_c, ".
+        "extemp = $this->extemp, ".
+        "salubridad = $this->salubridad ".
         "where id = $this->id";
 
-        $this->ejecutarComandoIUD();
+        $this->ejecutaComandoIUD();
     }
 
     function eliminarRegistro($id){
