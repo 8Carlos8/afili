@@ -2,6 +2,48 @@ body {
     background-color: white;
     font-family: 'Arial', sans-serif;
 }
+
 .btn-space {
     margin-block-end: 10px;
+}
+
+/* Estilo de Sesión */
+
+.sesion {
+    background-color: white;
+    /*font-family: 'Arial', sans-serif;*/
+}
+
+.container-s {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-group-s {
+    margin-bottom: 20px;
+    color: black
+}
+
+.btn-primary-s {
+    background-color: #8cc4df;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary-s:hover {
+    background-color: #0b1629;
+}
+
+.alert-danger-s {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
 }
