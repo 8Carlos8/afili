@@ -26,6 +26,11 @@ class Afiliado extends Modelo{
         return $this->encuentraTodos();
     }
 
+    function recuperarNombre($n, $aP, $aM){
+        $this->consulta = "select * from $this->tabla where nombre = '$n' and apellido_paterno = '$aP' and apellido_materno = '$aM'";
+        return $this->encuentraTodos();
+    }
+
     function recuperarRegistro($id){
         $this->consulta = "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
@@ -46,6 +51,15 @@ class Afiliado extends Modelo{
         return $dato;
     }
 
+    function recuperarExpedientePorId($id) {
+        $this->consulta = "select expediente from $this->tabla where id = $id";
+        $dato = $this->encuentraUno();
+        if (isset($dato)) {
+            $this->expediente = $dato->expediente;
+        }
+        return $dato ? $dato->expediente : null;
+    }
+
     function insertarRegistro(){
         $this->id = $_POST['id'];
         $this->nombre = $_POST['nombre'];
@@ -59,28 +73,32 @@ class Afiliado extends Modelo{
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
+
+        if (is_uploaded_file($_FILES['expediente']['tmp_name'])) {
+            $file_tmp = $_FILES['expediente']['tmp_name'];
+            $this->expediente = file_get_contents($file_tmp);
+        } else {
+            echo "Error: El archivo no fue cargado correctamente.";
+            return;
+        }
         
-        $file_name = $_FILES['expediente']['name'];
-        $this->file_name = $file_name;
-        $file_tmp = $_FILES['expediente']['tmp_name'];
-        $route = "../Archivos/Expedientes/".$file_name;
-        move_uploaded_file($file_tmp, $route);
+        $expediente_escaped = addslashes($this->expediente);
 
         $this->consulta = 
         "insert into $this->tabla (nombre, apellido_paterno, apellido_materno, rfc, curp, direccion, numero_Ext_Int, codiigo_postal, colonia, telefono, correo, expediente)".
-        "values (".
-        "'$this->nombre',".
-        "'$this->apellido_paterno',".
-        "'$this->apellido_materno',".
-        "'$this->rfc',".
-        "'$this->curp',".
-        "'$this->direccion',".
-        "'$this->numero_Ext_Int',".
-        "'$this->codiigo_postal',".
-        "'$this->colonia',".
-        "'$this->telefono',".
-        "'$this->correo',".
-        "'$this->file_name');";
+        "values (" .
+        "'$this->nombre', ".
+        "'$this->apellido_paterno', ".
+        "'$this->apellido_materno', ".
+        "'$this->rfc', ".
+        "'$this->curp', ".
+        "'$this->direccion', ".
+        "'$this->numero_Ext_Int', ".
+        "'$this->codiigo_postal', ".
+        "'$this->colonia', ".
+        "'$this->telefono', ".
+        "'$this->correo', ".
+        "'$expediente_escaped')";
 
         $this->ejecutaComandoIUD();
     }
@@ -98,31 +116,46 @@ class Afiliado extends Modelo{
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
-        // $this->expediente = $_FILES['expediente']['name'];
         $this->expediente = isset($_FILES['expediente']['name']) ? $_FILES['expediente']['name'] : null;
 
-    
-        // Mover el archivo a la carpeta deseada
-        $file_tmp = $_FILES['expediente']['tmp_name'];
-        $route = "../Archivos/Expedientes/".$this->expediente;
-        move_uploaded_file($file_tmp, $route);
-    
-        $this->consulta = 
-        "update $this->tabla set ".
-        "nombre = '$this->nombre', ".
-        "apellido_paterno = '$this->apellido_paterno', ".
-        "apellido_materno = '$this->apellido_materno', ".
-        "rfc = '$this->rfc', ".
-        "curp = '$this->curp', ".
-        "direccion = '$this->direccion', ".
-        "numero_Ext_Int = '$this->numero_Ext_Int', ".
-        "codiigo_postal = '$this->codiigo_postal', ".
-        "colonia = '$this->colonia', ".
-        "telefono = '$this->telefono', ".
-        "correo = '$this->correo', ".
-        "expediente = '$this->expediente' ".
-        "where id = $this->id";
-    
+        if (is_uploaded_file($_FILES['expediente']['tmp_name'])) {
+            $file_tmp = $_FILES['expediente']['tmp_name'];
+            $this->expediente = file_get_contents($file_tmp);
+
+            $expediente_escaped = addslashes($this->expediente);
+        
+            $this->consulta = 
+            "update $this->tabla set ".
+            "nombre = '$this->nombre', ".
+            "apellido_paterno = '$this->apellido_paterno', ".
+            "apellido_materno = '$this->apellido_materno', ".
+            "rfc = '$this->rfc', ".
+            "curp = '$this->curp', ".
+            "direccion = '$this->direccion', ".
+            "numero_Ext_Int = '$this->numero_Ext_Int', ".
+            "codiigo_postal = '$this->codiigo_postal', ".
+            "colonia = '$this->colonia', ".
+            "telefono = '$this->telefono', ".
+            "correo = '$this->correo', ".
+            "expediente = '$expediente_escaped' ".
+            "where id = $this->id";
+        } 
+        else {
+            $this->consulta = 
+            "update $this->tabla set ".
+            "nombre = '$this->nombre', ".
+            "apellido_paterno = '$this->apellido_paterno', ".
+            "apellido_materno = '$this->apellido_materno', ".
+            "rfc = '$this->rfc', ".
+            "curp = '$this->curp', ".
+            "direccion = '$this->direccion', ".
+            "numero_Ext_Int = '$this->numero_Ext_Int', ".
+            "codiigo_postal = '$this->codiigo_postal', ".
+            "colonia = '$this->colonia', ".
+            "telefono = '$this->telefono', ".
+            "correo = '$this->correo' ".
+            "where id = $this->id";
+        }
         $this->ejecutaComandoIUD();
     }
     

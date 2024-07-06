@@ -73,12 +73,9 @@ if (isset($_POST['id'])) {
                     <input type="email" name="correo" id="correo" class="form-control" value="<?= $afiliado->correo ?>">
                 </div>
                 <div class="form-group">
-                    <label>Expediente</label>
+                    <label>Expediente:</label>
                     <?php if (!empty($afiliado->expediente)) { ?>
-                        <br>
-                        <span><?= $afiliado->expediente ?></span>
-                        <br>
-                        <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?>" target="_blank">Ver Expediente</a>
+                        <a href="ver_expediente.php?id=<?= $afiliado->id ?>" target="_blank">Ver Expediente</a>
                     <?php } ?>
                     <input type="file" name="expediente" id="expediente" class="form-control" accept="application/pdf">
                 </div>

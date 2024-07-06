@@ -5,7 +5,6 @@ require_once('../Sesion/header.php');
 
 $licencia = new Licencia();
 $afiliado = new Afiliado();
-$licencias = $licencia->lista();
 $afiliados = $afiliado->lista();
 if ($_GET['id']) {
     $licencia->id = $_GET['id'];
@@ -49,10 +48,9 @@ if ($_GET['id']) {
                     <label>Licencia</label>
                 </td>
                 <td>
-                    <span title="<?= $licencia->licencia ?>"><?= $licencia->licencia . " "?>
-                    <br>
-                    <a href="../Archivos/Licencias/<?= $licencia->licencia ?>" type="application/pdf" target="_blank">Ver Licencia</a>
-                    </span>
+                    <?php if(!empty($licencia->licencia)) {?>
+                        <a href="ver_licencia.php?id=<?= $licencia->id ?>" target="_blank">Ver Licencia</a>
+                    <?php } ?>
                 </td>
             </tr>
         </table>

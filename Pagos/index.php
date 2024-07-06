@@ -17,6 +17,7 @@ $promotores = $promotor->lista();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/conf.js"></script>
     <title>Pagos</title>
 </head>
 <body>
@@ -91,7 +92,7 @@ $promotores = $promotor->lista();
                         <td>
                             <a href="visualizar.php?id=<?= $pago->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                             <a href="actualizar.php?id=<?= $pago->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Pago</a>&nbsp;
-                            <a href="eliminar.php?id=<?= $pago->id ?>" class="btn btn-warning btn-space" title='Eliminar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                            <button class="btn btn-warning btn-space" onclick="confirmarEliminar(<?= $pago->id ?>)" title='Eliminar'><i class="bi bi-trash"></i>&nbsp;Eliminar</button>&nbsp;
                         </td>
                     </tr>
                 <?php } ?>

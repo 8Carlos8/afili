@@ -16,6 +16,11 @@ class Licencia extends Modelo{
         return $this->encuentraTodos();
     }
 
+    function recuperarAfiliado($id_afiliado){
+        $this->consulta = "select * from $this->tabla where id_afiliado = $id_afiliado";
+        return $this->encuentraTodos();
+    }
+
     function recuperarRegistro($id){
         $this->consulta = "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
@@ -27,21 +32,34 @@ class Licencia extends Modelo{
         return $dato;
     }
 
+    function recuperarLicenciaPorId($id){
+        $this->consulta = "select licencia from $this->tabla where id = $id";
+        $dato = $this->encuentraUno();
+        if (isset($dato)) {
+            $this->licencia = $dato->licencia;
+        }
+        return $dato ? $dato->licencia : null;
+    }
+
     function insertarRegistro(){
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
-        
-        $file_name = $_FILES['licencia']['name'];
-        $this->file_name = $file_name;
-        $file_tmp = $_FILES['licencia']['tmp_name'];
-        $route = "../Archivos/Licencias/".$file_name;
-        move_uploaded_file($file_tmp, $route);
+
+        if (is_uploaded_file($_FILES['licencia']['tmp_name'])) {
+            $file_tmp = $_FILES['licencia']['tmp_name'];
+            $this->licencia = file_get_contents($file_tmp);
+        } else {
+            echo "Error: El archivo no fue cargado correctamente.";
+            return;
+        }
+
+        $licencia_escaped = addslashes($this->licencia);
 
         $this->consulta =
         "insert into $this->tabla (id_afiliado, licencia)".
         "values (".
         "$this->id_afiliado,".
-        "'$this->file_name');";
+        "'$licencia_escaped');";
 
         $this->ejecutaComandoIUD();
     }
@@ -49,18 +67,25 @@ class Licencia extends Modelo{
     function actualizaRegistro(){
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
+        $this->licencia = isset($_FILES['licencia']['name']) ? $_FILES['licencia']['name'] : null;
 
-        $file_name = $_FILES['licencia']['name'];
-        $this->file_name = $file_name;
-        $file_tmp = $_FILES['licencia']['tmp_name'];
-        $route = "../Archivos/Licencias/".$file_name;
-        move_uploaded_file($file_tmp, $route);
+        if (is_uploaded_file($_FILES['licencia']['tmp_name'])) {
+            $file_tmp = $_FILES['licencia']['tmp_name'];
+            $this->licencia = file_get_contents($file_tmp);
 
-        $this->consulta =
-        "update $this->tabla set ".
-        "id_afiliado = $this->id_afiliado, ".
-        "licencia '$this->licencia' ".
-        "where id = $this->id";
+            $licencia_escaped = addslashes($this->licencia);
+
+            $this->consulta =
+            "update $this->tabla set ".
+            "id_afiliado = $this->id_afiliado, ".
+            "licencia '$licencia_escaped' ".
+            "where id = $this->id";
+        } else {
+            $this->consulta =
+            "update $this->tabla set ".
+            "id_afiliado = $this->id_afiliado ".
+            "where id = $this->id";
+        }
 
         $this->ejecutaComandoIUD();
     }

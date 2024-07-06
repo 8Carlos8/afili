@@ -31,6 +31,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
         .navbar {
             background-color: #111D7E;
+            height: 80px;
         }
 
         .navbar-brand {
@@ -44,6 +45,18 @@ if (session_status() == PHP_SESSION_NONE) {
 
         .nav-link:hover {
             color: #111D7E;
+        }
+
+        .logo {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
     </style>
 </head>
@@ -61,6 +74,9 @@ if (session_status() == PHP_SESSION_NONE) {
                 <a class="nav-link" href="logaut.php" style="color: white;">Cerrar Sesión</a>
             </li>
         </ul>
+        <div class="navbar-center">
+            <img src="../css/img/logo.png" class="logo" width="90px">
+        </div>
         <a class="navbar-brand" style="color: white;"><?= $username ?></a>
     </nav>
 </body>

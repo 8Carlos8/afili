@@ -17,6 +17,7 @@ $roles = $rol->lista();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/conf.js"></script>
     <title>Administradores</title>
 </head>
 <body>
@@ -75,7 +76,7 @@ $roles = $rol->lista();
                             <td>
                                 <a href="visualizar.php?id=<?= $administrador->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                                 <a href="actualizar.php?id=<?= $administrador->id ?>" class="btn btn-info" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Administrador</a>&nbsp;
-                                <a href="eliminar.php?id=<?= $administrador->id ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                                <button class="btn btn-warning btn-space" onclick="confirmarEliminar(<?= $administrador->id ?>)" title='Eliminar'><i class="bi bi-trash"></i>&nbsp;Eliminar</button>&nbsp;
                             </td>
                         </tr>
                 <?php } ?>

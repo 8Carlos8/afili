@@ -17,6 +17,7 @@ $roles = $rol->lista();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/conf.js"></script>
     <title>Promotores</title>
 </head>
 <body>
@@ -70,9 +71,9 @@ $roles = $rol->lista();
                         <td><span title="<?= $promotor->telefono ?>"><?= $promotor->telefono ?></span></td>
                         <td><span title="<?= $promotor->siglas_promotor ?>"><?= $promotor->siglas_promotor ?></span></td>
                         <td>
-                        <a href="visualizar.php?id=<?= $promotor->id ?>" class="btn btn-primary btn-space" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
-                        <a href="actualizar.php?id=<?= $promotor->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Afiliado</a>&nbsp;
-                        <a href="eliminar.php?id=<?= $promotor->id ?>" class="btn btn-warning" title='Eliminar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                            <a href="visualizar.php?id=<?= $promotor->id ?>" class="btn btn-primary btn-space" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
+                            <a href="actualizar.php?id=<?= $promotor->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Afiliado</a>&nbsp;
+                            <button class="btn btn-warning btn-space" onclick="confirmarEliminar(<?= $promotor->id ?>)" title='Eliminar'><i class="bi bi-trash"></i>&nbsp;Eliminar</button>&nbsp;
                         </td>
                     </tr>
                     <?php } ?>

@@ -56,14 +56,6 @@ if ($_GET['id']) {
             </tr>
             <tr>
                 <td>
-                    <label>Apellido Materno</label>
-                </td>
-                <td>
-                    <span><?= $afiliado->apellido_materno ?></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
                     <label>RFC</label>
                 </td>
                 <td><?= $afiliado->rfc ?></td>
@@ -129,10 +121,9 @@ if ($_GET['id']) {
                     <label>Expediente</label>
                 </td>
                 <td>
-                    <spam title="<?= $afiliado->expediente ?>"><?= $afiliado->expediente . " "?>
-                        <br>
-                                <a href="../Archivos/Expedientes/<?= $afiliado->expediente ?>" type="application/pdf" target="_blank">Ver Expediente</a>
-                            </spam></td>
+                    <?php if (!empty($afiliado->expediente)) { ?>
+                        <a href="ver_expediente.php?id=<?= $afiliado->id ?>" target="_blank">Ver Expediente</a>
+                    <?php } ?>
                 </td>
             </tr>
         </table>

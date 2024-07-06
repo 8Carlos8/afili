@@ -17,6 +17,7 @@ if (isset($_POST['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/buscarAfiliado.js"></script>
     <title>Insertar Licencia</title>
 </head>
 <body>
@@ -28,11 +29,13 @@ if (isset($_POST['id'])) {
             <input type="hidden" name="id" value="0">
             <div class="form-group">
                 <label>ID Afiliado</label>
+                <input type="text" id="buscar_afiliado" onkeyup="filtrarAfiliado()" class="form-control mt-2" placeholder="Buscar Afiliado">
+                <br>
                 <select name="id_afiliado" id="id_afiliado" class="form-control">
                     <option value="">Seleccionar Afiliado</option>
                     <?php foreach($afiliados as $afiliado) {?>
                         <option value="<?= $afiliado->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>
-                        <?php } ?>
+                    <?php } ?>
                 </select>
             </div>
             <div class="form-group">

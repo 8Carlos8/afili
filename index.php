@@ -41,19 +41,22 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
 <body class="sesion">
     <header>
         <h1 class="titulo">
-            <center>CANACO</center>
+            <!--center>CANACO</center!-->
         </h1>
     </header>
-    <img src="../css/img/logo.png">
-    <div class="container-s">
+    <div class="text-center" >
+        <img src="./css/img/logo.png" class="logo" width="300px">
+    </div>
+    <br>
+    <div class="container">
         <?php if (isset($errores) && count($errores) > 0) { ?>
             <?php foreach ($errores as $error) { ?>
-                <div class="alert alert-danger-s" role="alert"><?= $error ?></div>
+                <div class="alert alert-danger" role="alert"><?= $error ?></div>
             <?php } ?>
         <?php } ?>
 
-        <form name="frmLogin" method="post" action="index.php">
-            <h1 align="center">
+        <form name="frmLogin" method="post" action="index.php" class="sesion">
+            <h1 class="text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="#122543" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <circle cx="12" cy="12" r="9" />
@@ -61,20 +64,23 @@ if (!empty($_POST['username']) && !empty($_POST['password'])) {
                     <path d="M6.75 16a8.5 8.5 0 0 1 10.5 0" />
                 </svg>
             </h1>
-            <div class="form-group-s">
-                <label for="username">Nombre del usuario:</label>
-                <input type="text" class="form-control" id="username" name="username">
+            <div class="container text-center">
+                <div class="form-group">
+                    <label for="username">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
             </div>
-            <div class="form-group-s">
-                <label for="password">Contraseña:</label>
-                <input type="password" class="form-control" id="password" name="password">
-            </div>
-            <button type="submit" class="btn btn-primary-s btn-block">Iniciar sesión</button>
         </form>
         <br>
-        <div class="form-group-s text-center">
-                <p>¿No tienes usuario?
-                <a href="Usuarios/insertar.php" class="btn btn-primary-s">&nbsp;Registrate</a>
+        <div class="text-center">
+            <p>¿No tienes usuario?
+                <a href="Usuarios/insertar.php" class="btn btn-primary">Regístrate</a>
+            </p>
         </div>
     </div>
 </body>

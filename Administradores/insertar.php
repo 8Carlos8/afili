@@ -19,6 +19,7 @@ if (isset($_POST['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/buscarUsuario.js"></script>
     <title>Insertar Administrador</title>
 </head>
 <body>
@@ -30,10 +31,12 @@ if (isset($_POST['id'])) {
             <input type="hidden" name="id" value="0">
             <div class="form-group">
                 <label>ID Usuario</label>
+                <input type="text" id="buscar_usuario" onkeyup="filtrarUsuarios()" class="form-control mt-2" placeholder="Buscar Usuario">
+                <br>
                 <select name="id_usuario" id="id_usuario" class="form-control">
                     <option value="">Seleccionar Usuario</option>
                     <?php foreach ($usuarios as $usuario) { ?>
-                        <option value="<?= $usuario->id ?>"><?= $usuario->username ?></option>
+                        <option value="<?= $usuario->id ?>" title="<?= $usuario->username ?>"><?= $usuario->username ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -42,10 +45,9 @@ if (isset($_POST['id'])) {
                 <select name="id_rol" id="id_rol" class="form-control">
                     <option value="">Seleccionar Rol</option>
                     <?php foreach ($roles as $rol) { ?>
-                        <?php
-                            if ($rol->nombre_rol == "Administrador") { ?>
-                                <option value="<?= $rol->id ?>"><?= $rol->nombre_rol ?></option>
-                            <?php break; } ?>
+                        <?php if ($rol->nombre_rol == "Administrador") { ?>
+                            <option value="<?= $rol->id ?>"><?= $rol->nombre_rol ?></option>
+                        <?php } ?>
                     <?php } ?>
                 </select>
             </div>
@@ -58,7 +60,7 @@ if (isset($_POST['id'])) {
                 <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control" placeholder="Apellido Paterno del Administrador" required>
             </div>
             <div class="form-group">
-            <label>Apellido Materno</label>
+                <label>Apellido Materno</label>
                 <input type="text" name="apellido_materno" id="apellido_materno" class="form-control" placeholder="Apellido Materno del Administrador" required>
             </div>
             <div class="form-group">

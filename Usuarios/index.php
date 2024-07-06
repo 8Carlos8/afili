@@ -11,6 +11,7 @@ $usuarios = $usuario->lista();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/conf.js"></script>
     <title>Lista de Usuarios</title>
 </head>
 <body>
@@ -36,8 +37,8 @@ $usuarios = $usuario->lista();
                         <td><span title="<?= $usuario->password ?>"><?= $usuario->password?></td>
                         <td>
                             <a href="visualizar.php?username=<?= $usuario->username ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
-                            <a href="actualizar.php?username=<?= $usuario->username ?>" class="btn btn-warning" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
-                            <a href="eliminar.php?id=<?= $usuario->id ?>" class="btn btn-warning" title='Eliminar '><i class="bi bi-pencil"></i>&nbsp;Eliminar</a>&nbsp;
+                            <a href="actualizar.php?username=<?= $usuario->username ?>" class="btn btn-info" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Usuario</a>&nbsp;
+                            <button class="btn btn-warning btn-space" onclick="confirmarEliminar(<?= $usuario->id ?>)" title='Eliminar'><i class="bi bi-trash"></i>&nbsp;Eliminar</button>&nbsp;
                         </td>
                     </tr>
                 <?php } ?>

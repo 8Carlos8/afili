@@ -5,7 +5,6 @@ require_once('../Sesion/header.php');
 
 $licencia = new Licencia();
 $afiliado = new Afiliado();
-$licencias = $licencia->lista();
 $afiliados = $afiliado->lista();
 if (isset($_POST['id'])) {
     $licencia->actualizaRegistro();
@@ -43,12 +42,9 @@ if (isset($_POST['id'])) {
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Licencia</label>
+                    <label>Licencia:</label>
                     <?php if (!empty($licencia->licencia)) { ?>
-                        <br>
-                        <span><?= $licencia->licencia ?></span>
-                        <br>
-                        <a href="../Archivos/Licencias/<?= $licencia->licencia ?>" target="__blank">Ver Licencia</a>
+                        <a href="ver_licencia.php?id=<?= $licencia->id ?>" target="_blank">Ver Licencia</a>
                     <?php } ?>
                     <input type="file" name="licencia" id="licencia" class="form-control" accept="application/pdf">
                 </div>

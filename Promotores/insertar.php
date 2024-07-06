@@ -19,6 +19,7 @@ if (isset($_POST['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/buscarUsuario.js"></script>
     <title>Insertar Promotor</title>
 </head>
 <body>
@@ -31,6 +32,8 @@ if (isset($_POST['id'])) {
             <table class="table">
                 <div class="form-group">
                     <label>Usuario</label>
+                    <input type="text" id="buscar_usuario" onkeyup="filtrarUsuarios()" class="form-control mt-2" placeholder="Buscar Usuario...">
+                    <br>
                     <select name="id_usuario" id="id_usuario" class="form-control">
                         <option value="">Seleccionar Usuario</option>
                         <?php foreach ($usuarios as $usuario) { ?>
