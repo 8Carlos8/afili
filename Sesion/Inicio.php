@@ -65,28 +65,29 @@ if ($usuarioActual == null) {
         .container {
             margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #ABACB7;
             border-radius: 15px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         }
 
         .btn-success {
-            background-color: #23c93c;
+            background-color: #111D7E;
             border: none;
             border-radius: 10px;
             transition: background-color 0.3s;
         }
 
         .btn-success:hover {
-            background-color: #1e9c2b;
+            background-color: #ABACB7;
         }
+        
     </style>
 </head>
 <body>
     <?php if ($rolUsuarioActual == 1) { ?>
         <div class="container py-2">
             <div class="form-group text-center">
-                <a href="../Usuarios/index.php" class="btn btn-success form-control">Usuarios</a>
+                <a href="../Usuarios/index.php" class="btn btn-success form-control color-letras">Usuarios</a>
             </div>
         </div>
         <div class="container py-2">
