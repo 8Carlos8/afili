@@ -107,7 +107,7 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Pago C</label>
-                <input type="text" name="pago_c" id="pago_" class="form-control">
+                <input type="text" name="pago_c" id="pago_c" class="form-control">
             </div>
             <div class="form-group">
                 <label>Extemp</label>

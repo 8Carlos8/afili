@@ -32,6 +32,11 @@ class Pago extends Modelo{
         return $this->encuentraTodos();
     }
 
+    function recuperarPromotor($id_promotor){
+        $this->consulta = "select * from $this->tabla where id_promotor = $id_promotor";
+        return $this->encuentraTodos();
+    }
+
     function recuperarRegistro($id){
         $this->consulta= "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
