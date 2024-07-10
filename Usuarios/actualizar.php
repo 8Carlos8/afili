@@ -1,13 +1,37 @@
 <?php
 require_once('../Logica/Usuario.php');
 require_once('../Sesion/header.php');
+include_once("../Logica/Administrador.php");
+
 $usuario = new Usuario();
+$administrador = new Administrador();
 if (isset($_POST['username'])) {
     $usuario->actualizaRegistro();
 }else {
     if (isset($_GET['username'])) {
         $usuario->username = $_GET['username'];
         $usuario->recuperarUsuario($usuario->username);
+    }
+}
+
+$administradores = $administrador->lista();
+
+
+$usuarioActual = null;
+$rolUsuarioActual = null;
+
+foreach ($administradores as $administrador) {
+    if ($administrador->id_usuario == $_SESSION['id']) {
+        $usuarioActual = $administrador;
+        $rolUsuarioActual = 1;
+        
+        if (isset($_GET['idAd'])) {
+            $administrador->id = $_GET['idAd'];
+            $administrador->recuperarRegistro($administrador->id);
+        }
+        break;
+    } else {
+        $rolUsuarioActual = 0;
     }
 }
 ?>
