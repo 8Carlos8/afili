@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form method="POST" class="form-inline justify-content-center mb-3">
                 <div class="form-group">
                     <label>ID Afiliado</label>
-                    <select name="id_afiliado" id="id_afiliado" class="form-control">
+                    <select name="id_afiliado" id="id_afiliado" class="form-control" required>
                         <option value="">Seleccionar Afiliado</option>
                         <?php foreach($afiliados as $afiliado) {?>
                             <option value="<?= $afiliado->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>

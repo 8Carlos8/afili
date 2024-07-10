@@ -80,6 +80,8 @@ CREATE TABLE pago(
 CREATE TABLE licencia(
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_afiliado INT,
+    tipo VARCHAR(50),
+    fecha DATETIME,
     licencia BLOB,
     FOREIGN KEY (id_afiliado) REFERENCES afiliado(id)
 );

@@ -21,9 +21,11 @@ if (isset($_POST['username'])) {
 </head>
 <body>
 <div class="container py-2">
+    <?php if ($rolUsuarioActual == 1) { ?>
     <div class="form-group text-center">
         <a href="index.php" class="btn btn-success">&nbsp;Lista de Usuario</a>
     </div>
+    <?php } ?>
     <form name="frmModProd" method="post" action="actualizar.php">
         <input type="hidden" name="id" value="<?= $usuario->username ?>">
         <table class="table">
