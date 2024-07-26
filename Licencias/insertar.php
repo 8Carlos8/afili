@@ -39,6 +39,20 @@ if (isset($_POST['id'])) {
                 </select>
             </div>
             <div class="form-group">
+                <label>Tipo</label>
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="">Seleccionar Licencia</option>
+                    <option value="Refrendo De Giros Normales">Refrendo De Giros Normales</option>
+                    <option value="Refrendo De Bebidas Alcoholicas">Refrendo De Bebidas Alcoholicas</option>
+                    <option value="Apertura Ordinaria">Apertura Ordinaria</option>
+                    <option value="Apertura Rapida">Apertura Rapida</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" id="fecha" class="form-control" required>
+            </div>
+            <div class="form-group">
                 <label>Licencia</label>
                 <input type="file" name="licencia" id="licencia" class="form-control" accept="application/pdf">
             </div>

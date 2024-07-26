@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <thead>
                 <th>ID</th>
                 <th>ID Afiliado</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
                 <th>Licencia</th>
                 <th>Acciones</th>
             </thead>
@@ -67,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         }
                     ?>
                     <td><span title="<?= $licencia->id_afiliado ?>"><?= $afiliadoEncontrado ? $afiliadoEncontrado->nombre . " " . $afiliadoEncontrado->apellido_paterno . " " . $afiliadoEncontrado->apellido_materno : 'Afiliado no encontrado' ?></span></td>
+                    <td><span title="<?= $licencia->tipo ?>"><?= $licencia->tipo ?></span></td>
+                    <td><span title="<?= $licencia->fecha ?>"><?= $licencia->fecha ?></span></td>
                     <td>
                             <a href="ver_licencia.php?id=<?= $licencia->id ?>" target="_blank">Ver Licencia</a>
                     </td>

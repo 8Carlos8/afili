@@ -4,6 +4,8 @@ require_once('Modelo.php');
 class Licencia extends Modelo{
     public $id;
     public $id_afiliado;
+    public $tipo;
+    public $fecha;
     public $licencia;
 
     function __construct(){
@@ -27,6 +29,8 @@ class Licencia extends Modelo{
         if (isset($dato)) {
             $this->id = $dato->id;
             $this->id_afiliado = $dato->id_afiliado;
+            $this->tipo = $dato->tipo;
+            $this->fecha = $dato->fecha;
             $this->licencia = $dato->licencia; 
         }
         return $dato;
@@ -44,6 +48,8 @@ class Licencia extends Modelo{
     function insertarRegistro(){
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
+        $this->tipo = $_POST['tipo'];
+        $this->fecha = $_POST['fecha'];
 
         if (is_uploaded_file($_FILES['licencia']['tmp_name'])) {
             $file_tmp = $_FILES['licencia']['tmp_name'];
@@ -56,9 +62,11 @@ class Licencia extends Modelo{
         $licencia_escaped = addslashes($this->licencia);
 
         $this->consulta =
-        "insert into $this->tabla (id_afiliado, licencia)".
+        "insert into $this->tabla (id_afiliado, tipo, fecha, licencia)".
         "values (".
         "$this->id_afiliado,".
+        "'$this->tipo',".
+        "'$this->fecha',".
         "'$licencia_escaped');";
 
         $this->ejecutaComandoIUD();
