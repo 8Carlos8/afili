@@ -1,99 +1,66 @@
 <?php
-require_once('Modelo.php');
+require_once('../Logica/Licencia.php');
+require_once('../Logica/Afiliado.php');
+require_once('../Sesion/header.php');
 
-class Administrador extends Modelo{
-    public $id;
-    public $id_usuario;
-    public $id_rol;
-    public $nombre;
-    public $apellido_paterno;
-    public $apellido_materno;
-    public $correo;
-    public $telefono;
-
-    function __construct(){
-        parent::__construct();
-        $this->tabla = 'administrador';
-    }
-
-    function lista(){
-        $this->consulta = "select * from $this->tabla";
-        return $this->encuentraTodos();
-    }
-
-    function recuperarRegistro($id){
-        $this->consulta = "select * from $this->tabla where id = $id";
-        $dato = $this->encuentraUno();
-        if (isset($dato)) {
-            $this->id = $dato->id;
-            $this->id_usuario = $dato->id_usuario;
-            $this->id_rol = $dato->id_rol;
-            $this->nombre = $dato->nombre;
-            $this->apellido_paterno = $dato->apellido_paterno;
-            $this->apellido_materno = $dato->apellido_materno;
-            $this->correo = $dato->correo;
-            $this->telefono = $dato->telefono;
-        }
-        return $dato;
-    }
-
-    function insertarRegistro(){
-        $this->id = $_POST['id'];
-        $this->id_usuario = $_POST['id_usuario'];
-        $this->id_rol = $_POST['id_rol'];
-        $this->nombre = $_POST['nombre'];
-        $this->apellido_paterno = $_POST['apellido_paterno'];
-        $this->apellido_materno = $_POST['apellido_materno'];
-        $this->correo = $_POST['correo'];
-        $this->telefono = $_POST['telefono'];
-
-        $this->consulta = 
-        "insert into $this->tabla (id_usuario, id_rol, nombre, apellido_paterno, apellido_materno, correo, telefono)".
-        "values (".
-        "$this->id_usuario,".
-        "$this->id_rol,".
-        "'$this->nombre',".
-        "'$this->apellido_paterno',".
-        "'$this->apellido_materno',".
-        "'$this->correo',".
-        "'$this->telefono');";
-
-        $this->ejecutaComandoIUD();
-    }
-
-    function actualizaRegistro(){
-        $this->id = $_POST['id'];
-        $this->id_usuario = $_POST['id_usuario'];
-        $this->id_rol = $_POST['id_rol'];
-        $this->nombre = $_POST['nombre'];
-        $this->apellido_paterno = $_POST['apellido_paterno'];
-        $this->apellido_materno = $_POST['apellido_materno'];
-        $this->correo = $_POST['correo'];
-        $this->telefono = $_POST['telefono'];
-
-        $this->consulta = 
-        "update $this->tabla set ".
-        "id_usuario = $this->id_usuario,".
-        "id_rol = $this->id_rol,".
-        "nombre = '$this->nombre',".
-        "apellido_paterno = '$this->apellido_paterno',".
-        "apellido_materno = '$this->apellido_materno',".
-        "correo = '$this->correo',".
-        "telefono = '$this->telefono'".
-        "where id = $this->id";
-
-        $this->ejecutaComandoIUD();
-    }
-
-    function eliminaRegistro($id){
-        $this->consulta = 
-        "delete from $this->tabla ".
-        "where id = $id;";
-
-        $this->ejecutaComandoIUD();
-    }
+$licencia = new Licencia();
+$afiliado = new Afiliado();
+$licencias = $licencia->lista();
+$afiliados = $afiliado->lista();
+if (isset($_POST['id'])) {
+    $licencia->insertarRegistro();
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../scripts/buscarAfiliado.js"></script>
+    <title>Insertar Licencia</title>
+</head>
+<body>
+    <div class="container py-3">
+        <div class="form-group text-center">
+            <a href="index.php" class="btn btn-success">&nbsp;Lista de Licencias</a>
+        </div>
+        <form name="frmInsLic" action="insertar.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="0">
+            <div class="form-group">
+                <label>ID Afiliado</label>
+                <input type="text" id="buscar_afiliado" onkeyup="filtrarAfiliado()" class="form-control mt-2" placeholder="Buscar Afiliado">
+                <br>
+                <select name="id_afiliado" id="id_afiliado" class="form-control">
+                    <option value="">Seleccionar Afiliado</option>
+                    <?php foreach($afiliados as $afiliado) {?>
+                        <option value="<?= $licencia->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>
+                    <?php } ?>
+                </select>
+                <br>
+                <select name="tipo" id="tipo" class="form-control">
+                    <option value="">Tipo de Licencia</option>
+                    <option value="Refrendo De Giros Normales">Refrendo De Giros Normales</option>
+                    <option value="Refrendo De Bebidas Alcoholicas">Refrendo De Bebidas Alcohólicas</option>
+                    <option value="Apertura Ordinaria">Apertura Ordinaria</option>
+                    <option value="Apertura Rapida">Apertura Rápida</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" id="fecha" class="form-control" >
+            </div>
+            <div class="form-group">
+                <label>Licencia</label>
+                <input type="file" name="licencia" id="licencia" class="form-control" accept="application/pdf">
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">&nbsp;Registrar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
 
 
 
