@@ -31,11 +31,11 @@ if (isset($_POST['id'])) {
         <form name="frmActLic" action="actualizar.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $licencia->id ?>">
             <table class="table">
-                <div class="form-group">
-                    <label>ID Afiliado</label>
+            <div class="form-group">
+                <label>ID Afiliado</label>
                     <select name="id_afiliado" id="id_afiliado" class="form-control">
                         <?php foreach($afiliados as $afiliado) { ?>
-                            <option value="<?= $afiliado->id ?>" <?= $afiliado->id == $licencia->id_afiliado ? 'select' : '' ?>>
+                            <option value="<?= $afiliado->id ?>" <?= $afiliado->id == $licencia->id_afiliado ? 'selected' : ''?>>
                                 <?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?>
                             </option>
                         <?php } ?>
