@@ -9,11 +9,19 @@ $licencias = [];
 $afiliados = $afiliado->lista();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_afiliado = $_POST['id_afiliado'];
-    $licencias = $licencia->recuperarAfiliado($id_afiliado);
+    if (isset($_POST['id_afiliado'])) {
+        $id_afiliado = $_POST['id_afiliado'];
+        $licencias = $licencia->recuperarAfiliado($id_afiliado);
+    } elseif (isset($_POST['fecha'])) {
+        $fecha = $_POST['fecha'];
+        $licencias = $licencia->recuperarFecha($fecha);
+    } else {
+        $licencias = $licencia->lista();
+    }
 } else {
     $licencias = $licencia->lista();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,13 +40,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <br>
             <form method="POST" class="form-inline justify-content-center mb-3">
                 <div class="form-group">
-                    <label>ID Afiliado</label>
+                    <label>Buscar por Afiliado</label>
                     <select name="id_afiliado" id="id_afiliado" class="form-control" required>
                         <option value="">Seleccionar Afiliado</option>
                         <?php foreach($afiliados as $afiliado) {?>
                             <option value="<?= $afiliado->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>
                             <?php } ?>
                     </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="index.php" class="btn btn-secondary ml-2">Restablecer</a>
+            </form>
+
+            <form method="POST" class="form-inline justify-content-center mb-3">
+                <div class="form-group">
+                    <label>Buscar por Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Buscar</button>
                 <a href="index.php" class="btn btn-secondary ml-2">Restablecer</a>

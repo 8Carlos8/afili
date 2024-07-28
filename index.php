@@ -2,30 +2,32 @@
 require_once("Logica/Usuario.php");
 $errores = array();
 $usuario = new Usuario();
+
 if (!empty($_POST['username']) && !empty($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    
     if ($usuario->recuperarUsuario($username)) {
-        if ($usuario->password == $password) {
+        if (password_verify($password, $usuario->password)) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
             $_SESSION['username'] = $usuario->username;
             $_SESSION['id'] = $usuario->id;
-            var_dump($_SESSION['id']);
             header("Location: Sesion/Inicio.php");
+            exit();
         } else {
-            array_push($errores, "El usuario o contraseña son incorrectas");
+            array_push($errores, "El usuario o contraseña son incorrectos");
         }
     } else {
         array_push($errores, "El usuario o contraseña son incorrectos");
     }
 } else {
     if (isset($_POST['username']) && empty($_POST['password'])) {
-        array_push($errores, "El nombre del usuario no puede estar vacio");
+        array_push($errores, "La contraseña no puede estar vacía");
     }
-    if (isset($_POST['password']) && empty($_POST['password'])) {
-        array_push($errores, "La contraseña no puede estar vacia");
+    if (isset($_POST['password']) && empty($_POST['username'])) {
+        array_push($errores, "El nombre del usuario no puede estar vacío");
     }
 }
 ?>

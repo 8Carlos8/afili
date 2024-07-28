@@ -33,7 +33,7 @@ if (isset($_POST['id'])) {
                 <label>ID Afiliado</label>
                 <input type="text" id="buscar_afiliado" onkeyup="filtrarAfiliado()" class="form-control mt-2" placeholder="Buscar Afiliado">
                 <br>
-                <select name="id_afiliado" id="id_afiliado" class="form-control">
+                <select name="id_afiliado" id="id_afiliado" class="form-control" required>
                     <option value="">Seleccionar Afiliado</option>
                     <?php foreach($afiliados as $afiliado) { ?>
                         <option value="<?= $afiliado->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>

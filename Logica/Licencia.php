@@ -23,6 +23,11 @@ class Licencia extends Modelo{
         return $this->encuentraTodos();
     }
 
+    function recuperarFecha($fecha){
+        $this->consulta = "select * from $this->tabla where fecha = '$fecha'";
+        return $this->encuentraTodos();
+    }
+
     function recuperarRegistro($id){
         $this->consulta = "select * from $this->tabla where id = $id";
         $dato = $this->encuentraUno();
@@ -75,6 +80,8 @@ class Licencia extends Modelo{
     function actualizaRegistro(){
         $this->id = $_POST['id'];
         $this->id_afiliado = $_POST['id_afiliado'];
+        $this->tipo = $_POST['tipo'];
+        $this->fecha = $_POST['fecha'];
         $this->licencia = isset($_FILES['licencia']['name']) ? $_FILES['licencia']['name'] : null;
 
         if (is_uploaded_file($_FILES['licencia']['tmp_name'])) {
@@ -86,12 +93,16 @@ class Licencia extends Modelo{
             $this->consulta =
             "update $this->tabla set ".
             "id_afiliado = $this->id_afiliado, ".
-            "licencia '$licencia_escaped' ".
+            "tipo = '$this->tipo', ".
+            "fecha = '$this->fecha', ".
+            "licencia = '$licencia_escaped' ".
             "where id = $this->id";
         } else {
             $this->consulta =
             "update $this->tabla set ".
-            "id_afiliado = $this->id_afiliado ".
+            "id_afiliado = $this->id_afiliado, ".
+            "tipo = '$this->tipo', ".
+            "fecha = '$this->fecha' ".
             "where id = $this->id";
         }
 

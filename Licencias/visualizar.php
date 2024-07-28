@@ -45,6 +45,23 @@ if ($_GET['id']) {
             </tr>
             <tr>
                 <td>
+                    <label>Tipo de Licencia</label>
+                </td>
+                <td>
+                    <span><?= $licencia->tipo ?></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Fecha</label>
+                </td>
+                <td>
+                    <span><?= $licencia->fecha ?></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label>Licencia</label>
                 </td>
                 <td>

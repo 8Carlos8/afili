@@ -42,6 +42,20 @@ if (isset($_POST['id'])) {
                     </select>
                 </div>
                 <div class="form-group">
+                    <label>Tipo de Licencia</label>
+                    <select name="tipo" id="tipo" class="form-control">
+                        <option value="<?= $licencia->tipo ?>" selected><?= $licencia->tipo ?></option>
+                        <option value="Refrendo De Giros Normales">Refrendo De Giros Normales</option>
+                        <option value="Refrendo De Bebidas Alcoholicas">Refrendo De Bebidas Alcoholicas</option>
+                        <option value="Apertura Ordinaria">Apertura Ordinaria</option>
+                        <option value="Apertura Rapida">Apertura Rapida</option>
+                    </select> 
+                </div>
+                <div class="form-group">
+                    <label>Fecha</label>
+                    <input type="date" name="fecha" id="fecha" class="form-control" value="<?= isset($licencia->fecha) ? date('Y-m-d', strtotime($licencia->fecha)) : '' ?>">
+                </div>
+                <div class="form-group">
                     <label>Licencia:</label>
                     <?php if (!empty($licencia->licencia)) { ?>
                         <a href="ver_licencia.php?id=<?= $licencia->id ?>" target="_blank">Ver Licencia</a>

@@ -31,7 +31,7 @@ if (isset($_POST['id'])) {
                 <label>ID Afiliado</label>
                 <input type="text" id="buscar_afiliado" onkeyup="filtrarAfiliado()" class="form-control mt-2" placeholder="Buscar Afiliado">
                 <br>
-                <select name="id_afiliado" id="id_afiliado" class="form-control">
+                <select name="id_afiliado" id="id_afiliado" class="form-control" required>
                     <option value="">Seleccionar Afiliado</option>
                     <?php foreach($afiliados as $afiliado) {?>
                         <option value="<?= $afiliado->id ?>"><?= $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno ?></option>
@@ -40,7 +40,7 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Tipo</label>
-                <select name="tipo" id="tipo" class="form-control">
+                <select name="tipo" id="tipo" class="form-control" required>
                     <option value="">Seleccionar Licencia</option>
                     <option value="Refrendo De Giros Normales">Refrendo De Giros Normales</option>
                     <option value="Refrendo De Bebidas Alcoholicas">Refrendo De Bebidas Alcoholicas</option>
@@ -54,7 +54,7 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Licencia</label>
-                <input type="file" name="licencia" id="licencia" class="form-control" accept="application/pdf">
+                <input type="file" name="licencia" id="licencia" class="form-control" accept="application/pdf" required>
             </div>
             <div class="form-group text-center">
                 <button type="submit" class="btn btn-primary">&nbsp;Registrar</button>

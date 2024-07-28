@@ -32,7 +32,7 @@ class Usuario extends Modelo{
     function insertarRegistro(){
         $this->id = $_POST['id'];
         $this->username = $_POST['username'];
-        $this->password = $_POST['password'];
+        $this->password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
         $this->consulta = 
         "insert into $this->tabla
@@ -47,7 +47,7 @@ class Usuario extends Modelo{
     function actualizaRegistro(){
         $this->id = $_POST['id'];
         $this->username = $_POST['username'];
-        $this->password = $_POST['password'];
+        $this->password = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
         $this->consulta = 
         "update $this->tabla set ".
@@ -66,5 +66,14 @@ class Usuario extends Modelo{
         $this->ejecutaComandoIUD();
     }
     
+    function verificarPassword($username, $password) {
+        $this->consulta = "SELECT * FROM $this->tabla WHERE username = '$username'";
+        $dato = $this->encuentraUno();
+
+        if (isset($dato)) {
+            return password_verify($password, $dato->password);
+        }
+        return false;
+    }
 }
 ?>
