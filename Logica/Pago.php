@@ -86,27 +86,26 @@ class Pago extends Modelo{
         $this->salubridad = $_POST['salubridad'];
 
         $this->consulta = 
-        "insert into $this->tabla 
-        (id_afiliado, id_promotor, codigo_factu, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad) ".
+        "insert into $this->tabla (id_afiliado, id_promotor, codigo_factu, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad) ".
         "values (" .
-        "$this->id_afiliado,".
-        "$this->id_promotor,".
-        "$this->codigo_factu,".
-        "$this->folio,".
-        "'$this->nombre_comercial',".
-        "'$this->giro',".
-        "'$this->giro2',".
-        "'$this->localidad',".
-        "$this->pago_afiliacion,".
-        "'$this->estado',".
-        "'$this->direccion',".
-        "'$this->calle1',".
-        "'$this->calle2',".
-        "'$this->fecha',".
-        "$this->form,".
-        "$this->pago_c,".
-        "$this->extemp,". 
-        "$this->salubridad);";
+        "$this->id_afiliado, ".
+        "$this->id_promotor, ".
+        "$this->codigo_factu, ".
+        "$this->folio, ".
+        "'$this->nombre_comercial', ".
+        "'$this->giro', ".
+        "'$this->giro2', ".
+        "'$this->localidad', ".
+        "$this->pago_afiliacion, ".
+        "'$this->estado', ".
+        "'$this->direccion', ".
+        "'$this->calle1', ".
+        "'$this->calle2', ".
+        "'$this->fecha', ".
+        "$this->form, ".
+        "$this->pago_c, ".
+        "$this->extemp, ". 
+        "$this->salubridad)";
 
         $this->ejecutaComandoIUD();
     }

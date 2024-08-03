@@ -45,10 +45,12 @@ CREATE TABLE afiliado(
     curp CHAR(18),
     direccion VARCHAR(350),
     numero_Ext_Int CHAR(5),
-    codiigo_postal CHAR(5),
+    codigo_postal CHAR(5),
     colonia VARCHAR(250),
     telefono CHAR(10),
     correo VARCHAR(200),
+    reporte VARCHAR(500),
+    fecha_afiliacion DATETIME,
     expediente BLOB
 );
 
@@ -61,7 +63,6 @@ CREATE TABLE pago(
     nombre_comercial VARCHAR(250),
     giro VARCHAR(500),
     giro2 VARCHAR(500),
-    /*rubro VARCHAR(500),*/
     localidad VARCHAR(150),
     pago_afiliacion DECIMAL,
     estado CHAR(3),
