@@ -109,6 +109,7 @@ class Pago extends Modelo{
 
         $this->consulta = 
         "insert into $this->tabla (id_afiliado, id_promotor, codigo_factu, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, modo_pago, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad, siem) ".
+        "insert into $this->tabla (id_afiliado, id_promotor, codigo_factu, folio, nombre_comercial, giro, giro2, localidad, pago_afiliacion, estado, direccion, calle1, calle2, fecha, form, pago_c, extemp, salubridad) ".
         "values (" .
         "$this->id_afiliado, ".
         "$this->id_promotor, ".
@@ -130,6 +131,24 @@ class Pago extends Modelo{
         "$this->extemp, ". 
         "$this->salubridad, ".
         "$this->siem)";
+        "$this->id_afiliado, ".
+        "$this->id_promotor, ".
+        "$this->codigo_factu, ".
+        "$this->folio, ".
+        "'$this->nombre_comercial', ".
+        "'$this->giro', ".
+        "'$this->giro2', ".
+        "'$this->localidad', ".
+        "$this->pago_afiliacion, ".
+        "'$this->estado', ".
+        "'$this->direccion', ".
+        "'$this->calle1', ".
+        "'$this->calle2', ".
+        "'$this->fecha', ".
+        "$this->form, ".
+        "$this->pago_c, ".
+        "$this->extemp, ". 
+        "$this->salubridad)";
 
         $this->ejecutaComandoIUD();
     }
