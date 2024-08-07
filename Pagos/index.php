@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form method="POST" class="form-inline justify-content-center mb-3">
                 <div class="form-group">
                     <label>ID Promotor</label>
-                    <select name="id_promotor" id="id_promotor" class="form-control">
+                    <select name="id_promotor" id="id_promotor" class="form-control" required>
                         <option value="">Seleccionar Promotor</option>
                         <?php foreach($promotores as $promotor) {?>
                             <option value="<?= $promotor->id ?>"><?= $promotor->nombre . " " . $promotor->apellido_paterno . " " . $promotor->apellido_materno ?></option>
