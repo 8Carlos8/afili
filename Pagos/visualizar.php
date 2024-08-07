@@ -110,7 +110,15 @@ if ($_GET['id']) {
         </tr>
         <tr>
             <td>
-                <label>Estado</label>
+                <label>Modo de Pago</label>
+            </td>
+            <td>
+                <span><?= $pago->modo_pago ?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Estatus</label>
             </td>
             <td>
                 <span><?= $pago->estado ?></span>
@@ -174,6 +182,14 @@ if ($_GET['id']) {
             </td>
             <td>
                 <span><?= $pago->salubridad ?></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Siem</label>
+            </td>
+            <td>
+                <span><?= $pago->siem ?></span>
             </td>
         </tr>
     </table>

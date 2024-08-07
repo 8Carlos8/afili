@@ -14,6 +14,8 @@ class Afiliado extends Modelo{
     public $colonia;
     public $telefono;
     public $correo;
+    public $reporte;
+    public $fecha_afiliacion;
     public $expediente;
     
     function __construct(){
@@ -46,6 +48,8 @@ class Afiliado extends Modelo{
             $this->colonia = $dato->colonia;
             $this->telefono = $dato->telefono;
             $this->correo = $dato->correo;
+            $this->reporte = $dato->reporte;
+            $this->fecha_afiliacion = $dato->fecha_afiliacion;
             $this->expediente = $dato->expediente;
         }
         return $dato;
@@ -73,19 +77,21 @@ class Afiliado extends Modelo{
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
-
-        if (is_uploaded_file($_FILES['expediente']['tmp_name'])) {
+        $this->reporte = $_POST['reporte'];
+        $this->fecha_afiliacion = $_POST['fecha_afiliacion'];
+    
+        if ($_FILES['expediente']['error'] == UPLOAD_ERR_OK) {
             $file_tmp = $_FILES['expediente']['tmp_name'];
             $this->expediente = file_get_contents($file_tmp);
+            echo "Tamaño del archivo: " . $_FILES['expediente']['size'] . " bytes.";
         } else {
-            echo "Error: El archivo no fue cargado correctamente.";
-            return;
+            echo "Error en la carga del archivo. Código de error: " . $_FILES['expediente']['error'];
         }
         
         $expediente_escaped = addslashes($this->expediente);
-
+    
         $this->consulta = 
-        "insert into $this->tabla (nombre, apellido_paterno, apellido_materno, rfc, curp, direccion, numero_Ext_Int, codiigo_postal, colonia, telefono, correo, expediente)".
+        "insert into $this->tabla (nombre, apellido_paterno, apellido_materno, rfc, curp, direccion, numero_Ext_Int, codiigo_postal, colonia, telefono, correo, reporte, fecha_afiliacion, expediente) ".
         "values (" .
         "'$this->nombre', ".
         "'$this->apellido_paterno', ".
@@ -98,10 +104,13 @@ class Afiliado extends Modelo{
         "'$this->colonia', ".
         "'$this->telefono', ".
         "'$this->correo', ".
+        "'$this->reporte', ".
+        "'$this->fecha_afiliacion', ".
         "'$expediente_escaped')";
-
+    
         $this->ejecutaComandoIUD();
     }
+    
 
     function actualizaRegistro(){
         $this->id = $_POST['id'];
@@ -116,6 +125,8 @@ class Afiliado extends Modelo{
         $this->colonia = $_POST['colonia'];
         $this->telefono = $_POST['telefono'];
         $this->correo = $_POST['correo'];
+        $this->reporte = $_POST['reporte'];
+        $this->fecha_afiliacion = $_POST['fecha_afiliacion'];
         $this->expediente = isset($_FILES['expediente']['name']) ? $_FILES['expediente']['name'] : null;
 
         if (is_uploaded_file($_FILES['expediente']['tmp_name'])) {
@@ -137,6 +148,8 @@ class Afiliado extends Modelo{
             "colonia = '$this->colonia', ".
             "telefono = '$this->telefono', ".
             "correo = '$this->correo', ".
+            "reporte = '$this->reporte', ".
+            "fecha_afiliacion = '$this->fecha_afiliacion', ".
             "expediente = '$expediente_escaped' ".
             "where id = $this->id";
         } 
@@ -153,7 +166,9 @@ class Afiliado extends Modelo{
             "codiigo_postal = '$this->codiigo_postal', ".
             "colonia = '$this->colonia', ".
             "telefono = '$this->telefono', ".
-            "correo = '$this->correo' ".
+            "correo = '$this->correo', ".
+            "reporte = '$this->reporte', ".
+            "fecha_afiliacion = '$this->fecha_afiliacion' ".
             "where id = $this->id";
         }
         $this->ejecutaComandoIUD();
@@ -167,5 +182,67 @@ class Afiliado extends Modelo{
 
         $this->ejecutaComandoIUD();
     }
+
+    //Consultas Extra
+
+    function recuperarPorColonia($colonia){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE colonia = '$colonia'";
+        return $this->encuentraTodos();
+    }
+
+    function recuperarPorFechaAfiliacion($fecha){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE fecha_afiliacion = '$fecha'";
+        return $this->encuentraTodos();
+    }
+
+    function recuperarPorRFC($rfc){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE rfc = '$rfc'";
+        return $this->encuentraTodos();
+    }
+
+    function contarAfiliados(){
+        $this->consulta = "SELECT COUNT(*) as total FROM $this->tabla";
+        return $this->encuentraUno();
+    }
+    
+    function recuperarPorCURP($curp){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE curp = '$curp'";
+        return $this->encuentraTodos();
+    }
+    
+    function recuperarPorRangoFechas($fecha_inicio, $fecha_fin){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE fecha_afiliacion BETWEEN '$fecha_inicio' AND '$fecha_fin'";
+        return $this->encuentraTodos();
+    }
+    
+    function recuperarPorCodigoPostal($codigo_postal){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE codiigo_postal = '$codigo_postal'";
+        return $this->encuentraTodos();
+    }
+    
+    function recuperarPorDireccion($direccion){
+        $this->consulta = "SELECT * FROM $this->tabla WHERE direccion = '$direccion'";
+        return $this->encuentraTodos();
+    }
+    
+    function contarAfiliadosPorColonia(){
+        $this->consulta = "SELECT colonia, COUNT(*) as total FROM $this->tabla GROUP BY colonia";
+        return $this->encuentraTodos();
+    }
+    
+    function contarAfiliadosPorFechaAfiliacion(){
+        $this->consulta = "SELECT fecha_afiliacion, COUNT(*) as total FROM $this->tabla GROUP BY fecha_afiliacion";
+        return $this->encuentraTodos();
+    }
+    
+    function afiliadosMasRecientes($limite = 10){
+        $this->consulta = "SELECT * FROM $this->tabla ORDER BY fecha_afiliacion DESC LIMIT $limite";
+        return $this->encuentraTodos();
+    }
+    
+    function afiliadosMasAntiguos($limite = 10){
+        $this->consulta = "SELECT * FROM $this->tabla ORDER BY fecha_afiliacion ASC LIMIT $limite";
+        return $this->encuentraTodos();
+    }    
 }
 ?>

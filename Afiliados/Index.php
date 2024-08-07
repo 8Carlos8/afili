@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../Logica/Afiliado.php');
 require_once('ver_expediente.php');
 require_once('../Sesion/header.php');
@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container-fluid py-3">
         <div class="form-group text-center">
             <a href="Insertar.php" class="btn btn-success">Ingresar a un nuevo afiliado</a>
+            <a href="reporte.php" class="btn btn-success">Reportes</a>
             <br>
             <br>
             <form method="POST" class="form-inline justify-content-center mb-3">
@@ -52,7 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>Código Postal</th>
                     <th>Colonia</th>
                     <th>Teléfono</th>
-                    <th>Correo</th>
+                    <th>Reporte</th>
+                    <th>Fecha de Afiliación</th>
                     <th>Expediente</th>
                     <th>Acciones</th>
                 </tr>
@@ -71,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <td><span title="<?= $afiliado->codiigo_postal ?>"><?= $afiliado->codiigo_postal ?></span></td>
                         <td><span title="<?= $afiliado->colonia ?>"><?= $afiliado->colonia ?></span></td>
                         <td><span title="<?= $afiliado->telefono ?>"><?= $afiliado->telefono ?></span></td>
-                        <td><span title="<?= $afiliado->correo ?>"><?= $afiliado->correo ?></span></td>
+                        <td><span title="<?= $afiliado->reporte ?>"><?= $afiliado->reporte ?></span></td>
+                        <td><span title="<?= $afiliado->fecha_afiliacion ?>"><?= $afiliado->fecha_afiliacion ?></span></td>
                         <td>
                             <a href="ver_expediente.php?id=<?= $afiliado->id ?>" target="_blank">Ver Expediente</a>
                         </td>

@@ -82,6 +82,10 @@ if (isset($_POST['id'])) {
                 <input type="text" name="pago_afiliacion" id="pago_afiliacion" class="form-control" value="<?= $pago->pago_afiliacion ?>">
             </div>
             <div class="form-group">
+                <label>Modo de Pago</label>
+                <input type="text" name="modo_pago" id="modo_pago" class="form-control" value="<?= $pago->modo_pago ?>">
+            </div>
+            <div class="form-group">
                 <label>Estado</label>
                 <select name="estado" id="estado" class="form-control">
                     <option value="">Seleccionar Estado</option>
@@ -120,6 +124,10 @@ if (isset($_POST['id'])) {
             <div class="form-group">
                 <label>Salubridad</label>
                 <input type="text" name="salubridad" id="salubridad" class="form-control" value="<?= $pago->salubridad ?>">
+            </div>
+            <div class="form-group">
+                <label>Siem</label>
+                <input type="text" name="siem" id="siem" class="form-control" value="<?= $pago->siem ?>">
             </div>
             <div class="form-group text-center">
                 <button class="btn btn-primary">&nbsp;Actualizar</button>

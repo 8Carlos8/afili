@@ -1,8 +1,8 @@
 <?php
 require_once('../Logica/Afiliado.php');
 
-$afiliado = new Afiliado();
 if (isset($_GET['id'])) {
+    $afiliado = new Afiliado();
     $afiliado->id = $_GET['id'];
     $expediente = $afiliado->recuperarExpedientePorId($afiliado->id);
 
@@ -10,6 +10,10 @@ if (isset($_GET['id'])) {
         header('Content-Type: application/pdf');
         header('Content-Disposition: inline; filename="expediente.pdf"');
         echo $expediente;
-    } 
-} 
+    } else {
+        echo "No se encontró el expediente.";
+    }
+} else {
+    //echo "ID no proporcionado.";
+}
 ?>

@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container-fluid py-3">
         <div class="form-group text-center">
             <a href="insertar.php" class="btn btn-success">Ingresa un nuevo Pago</a>
+            <a href="reporte.php" class="btn btn-success">&nbsp;Reportes</a>
             <br>
             <br>
             <form method="POST" class="form-inline justify-content-center mb-3">
@@ -52,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>ID Afiliado</th>
-                    <th>ID Promotor</th>
+                    <th>Afiliado</th>
+                    <th>Promotor</th>
                     <th>Codigo Factura</th>
                     <th>Folio</th>
                     <th>Nombre Comercial</th>
@@ -81,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php
                             foreach ($afiliados as $afiliado) {
                                 if ($afiliado->id == $pago->id_afiliado) {
-                                    echo $afiliado->nombre;
+                                    echo $afiliado->nombre . " " . $afiliado->apellido_paterno . " " . $afiliado->apellido_materno;
                                     break;
                                 }
                             }
@@ -115,6 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>
                             <a href="visualizar.php?id=<?= $pago->id ?>" class="btn btn-primary" title='Ver datalles '><i class="bi bi-binoculars"></i>&nbsp;Ver Detalles</a>&nbsp;
                             <a href="actualizar.php?id=<?= $pago->id ?>" class="btn btn-info btn-space" title='Editar '><i class="bi bi-pencil"></i>&nbsp;Editar Pago</a>&nbsp;
+                            <a href="comprobante.php?id=<?= $pago->id ?>" class="btn btn-success btn-space" title='Imprimir'><i class="bi bi-printer"></i>&nbsp;Imprimir</a>
                             <button class="btn btn-warning btn-space" onclick="confirmarEliminar(<?= $pago->id ?>)" title='Eliminar'><i class="bi bi-trash"></i>&nbsp;Eliminar</button>&nbsp;
                         </td>
                     </tr>

@@ -73,6 +73,14 @@ if (isset($_POST['id'])) {
                     <input type="email" name="correo" id="correo" class="form-control" value="<?= $afiliado->correo ?>">
                 </div>
                 <div class="form-group">
+                    <label>Reporte</label>
+                    <input type="text" name="reporte" id="reporte" class="form-control" placeholder="Reporte del Afiliado" value="<?= $afiliado->reporte ?>">
+                </div>
+                <div class="form-group">
+                    <label>Fecha de Afiliación</label>
+                    <input type="date" name="fecha_afiliacion" id="fecha_afiliacion" class="form-control" value="<?= isset($pago->fecha) ? date('Y-m-d', strtotime($pago->fecha)) : '' ?>">
+                </div>
+                <div class="form-group">
                     <label>Expediente:</label>
                     <?php if (!empty($afiliado->expediente)) { ?>
                         <a href="ver_expediente.php?id=<?= $afiliado->id ?>" target="_blank">Ver Expediente</a>

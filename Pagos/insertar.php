@@ -21,6 +21,22 @@ if (isset($_POST['id'])) {
     <link rel="stylesheet" href="../css/style.css">
     <script src="../scripts/buscarAfiliado.js"></script>
     <title>Insertar Pago</title>
+    <style>
+        #campo_oculto {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleCampoOculto() {
+            var checkbox = document.getElementById('agregar_pago');
+            var campoOculto = document.getElementById('campo_oculto');
+            if (checkbox.checked) {
+                campoOculto.style.display = 'block';
+            } else {
+                campoOculto.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container py-3">
@@ -78,11 +94,15 @@ if (isset($_POST['id'])) {
                 <input type="text" name="pago_afiliacion" id="pago_afiliacion" class="form-control" required>
             </div>
             <div class="form-group">
-                <label>Estado</label>
+                <label>Modo de Pago</label>
+                <input type="text" name="modo_pago" id="modo_pago" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Estatus</label>
                 <select name="estado" id="estado" class="form-control">
-                    <option value="">Seleccionar Estado</option>
-                    <option value="nueva">Nueva</option>
-                    <option value="renovacion">Renovación</option>
+                    <option value="">Seleccionar Estatus</option>
+                    <option value="Apertura">Apertura</option>
+                    <option value="Refrendo">Refrendo</option>
                 </select>
             </div>
             <div class="form-group">
@@ -117,6 +137,19 @@ if (isset($_POST['id'])) {
                 <label>Salubridad</label>
                 <input type="text" name="salubridad" id="salubridad" class="form-control">
             </div>
+
+            <!-- Checkbox para mostrar/ocultar el campo adicional -->
+            <div class="form-group">
+                <input type="checkbox" id="agregar_pago" onclick="toggleCampoOculto()">
+                <label for="agregar_pago">Agregar Pago SIEM</label>
+            </div>
+
+            <!-- Campo oculto -->
+            <div id="campo_oculto" class="form-group">
+                <label>Pago SIEM</label>
+                <input type="text" name="siem" id="siem" class="form-control">
+            </div>
+
             <div class="form-group text-center">
                 <button class="btn btn-primary">&nbsp;Registrar</button>
             </div>

@@ -52,7 +52,7 @@ if (isset($_POST['id'])) {
                 <input type="text" name="numero_Ext_Int" id="numero_Ext_Int" class="form-control" placeholder="Número del Local" required> 
             </div>
             <div class="form-group">
-                <label>Códigp Postal</label>
+                <label>Código Postal</label>
                 <input type="number" name="codiigo_postal" id="codiigo_postal" class="form-control" placeholder="Código Postal del Local" required> 
             </div>
             <div class="form-group">
@@ -61,11 +61,19 @@ if (isset($_POST['id'])) {
             </div>
             <div class="form-group">
                 <label>Telefono</label>
-                <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Teléfono del Afiliado" required>
+                <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Teléfono del Afiliado" required>
             </div>
             <div class="form-group">
                 <label>Correo</label>
                 <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo del Afiliado">
+            </div>
+            <div class="form-group">
+                <label>Reporte</label>
+                <input type="text" name="reporte" id="reporte" class="form-control" placeholder="Reporte del Afiliado">
+            </div>
+            <div class="form-group">
+                <label>Fecha de Afiliación</label>
+                <input type="date" name="fecha_afiliacion" id="fecha_afiliacion" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Expediente</label>
